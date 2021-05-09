@@ -1,7 +1,45 @@
 body
 {
-	background-color: #fff;
-	color: #000;
+	background-color: #fefcfe;
 	font-family: 'Lato', sans-serif;
 	font-size: 20px;
+}
+
+.button
+{
+
+	margin: 50px;
+	float: right;
+	width: 150px;
+	padding:10px;
+	text-align: center;
+	border: 1px solid #000;
+	border-radius: 10px;
+}
+
+header
+{
+	margin-top: 100px;
+	width: 500px;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+h1.logo
+{
+	font-size: 40px;
+	font-weight: 400;
+	font-family: 'Caveat', cursive;
+}
+#container
+{
+	background-color: #fff;
+	margin-left: auto;
+	margin-right: auto;
+	width: 500px;
+	height: 500px;
+	border: 1px solid #eee;
+	border-radius: 10px;
+	
+	padding: 20px;
 }
