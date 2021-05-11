@@ -1,0 +1,153 @@
+body
+{
+	background-color: #fefcfe;
+	font-family: 'Poppins', sans-serif;
+	font-size: 20px;
+}
+
+.button
+{
+	margin-top: 20px;
+	margin-right: 50px;
+	float: right;
+	width: 150px;
+	padding:8px;
+	border: 1px solid #d6d6d6;
+	border-radius: 10px;
+	font-family: 'Poppins', sans-serif;
+	font-weight: 200;
+	color: #000;
+	text-align: center;
+}
+
+.button:hover
+{
+	background-color: #e6e6e6;
+}
+
+header
+{
+
+	width: 600px;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+h1.logo
+{
+	font-size: 40px;
+	font-weight: 400;
+	font-family: 'Caveat', cursive;
+	line-height: 40px;
+	margin-top: 10px;
+	margin-bottom: 22px;
+}
+#container
+{
+	background-color: #fff;
+	margin-left: auto;
+	margin-right: auto;
+	width: 500px;
+	height: 440px;
+	border: 1px solid #eee;
+	border-radius: 10px;
+	padding: 20px 40px;
+	webkit-box-shadow: 0px 0px 21px -6px rgba(122,122,122,1);
+	-moz-box-shadow: 0px 0px 21px -6px rgba(122,122,122,1);
+	box-shadow: 0px 0px 21px -6px rgba(122,122,122,1);
+}
+
+h2
+{
+	font-weight: 400;
+	letter-spacing: 2px;
+	font-size: 28px;
+	line-height: 28px;
+}
+
+input[type=text],
+input[type=password],
+input[type=email]
+{
+	width: 350px;
+	background-color: #f9f9f9;
+	color: #666;
+	border: 2px solid #f9f9f9;
+	border-radius: 5px;
+	font-size: 20px;
+	padding: 10px;
+	box-sizing: border-box;
+	outline: none;
+}
+
+input[type=text]:focus,
+input[type=password]:focus,
+input[type=email]:focus
+{
+	border: 2px solid #5BEB3D;
+	background-color: #fff;
+}
+
+input[type=text]:hover,
+input[type=password]:hover,
+input[type=email]:hover
+{
+	background-color: #fff;
+}
+
+input[type=submit]
+{
+	margin-left: 100px;
+	width: 300px;
+	background-color: #39C91B;
+	color: white;
+	border: none;
+	border-radius: 5px;
+	font-size: 20px;
+	padding: 12px;
+	margin-top: 23px;
+	cursor: pointer;
+	letter-spacing: 2px;
+	outline: none;
+}
+
+input[type=submit]:hover
+{
+	background-color: #15971b;
+}
+
+
+.textfield
+{
+	float: left;
+	width: 100px;
+	font-size: 20px;
+	padding: 10px;
+	margin-top: 10px;
+	line-height: 45px;
+}
+
+#regulations
+{
+	margin-top: 7px;
+	margin-left: 70px;
+	line-height: 25px;
+	font-size: 15px;
+}
+
+.link
+{
+	color: #5BEB3D;
+	text-decoration: none;
+}
+
+.link:hover
+{
+	text-decoration: underline;
+}
+
+.register
+{
+	margin-left: auto;
+	margin-right: auto;
+}
