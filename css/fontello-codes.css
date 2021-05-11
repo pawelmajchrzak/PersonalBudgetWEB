@@ -1,4 +1,8 @@
 
 .icon-money:before { content: '\e800'; } /* '' */
 .icon-home:before { content: '\e801'; } /* '' */
-.icon-dollar:before { content: '\e804'; } /* '' */
+.icon-cog-alt:before { content: '\e802'; } /* '' */
+.icon-down-open:before { content: '\e806'; } /* '' */
+.icon-basket:before { content: '\e808'; } /* '' */
+.icon-money-1:before { content: '\e809'; } /* '' */
+.icon-chart-pie:before { content: '\f200'; } /* '' */
