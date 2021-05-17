@@ -34,8 +34,8 @@
 			<div class="navigation">
 				<ol>
 					<li><a href="addIncome.html"><i class="icon-money-1"></i>Dodaj przychód</a></li>
-					<li><a href="addExpense.html"><i class="icon-basket"></i>Dodaj wydatek</a></li>
-					<li><a href="viewBalanceSheet.html"><i class="icon-chart-pie"></i>Przeglądaj bilans</a></li>
+					<li ><a href="addExpense.html"><i class="icon-basket"></i>Dodaj wydatek</a></li>
+					<li ><a href="viewBalanceSheet.html"><i class="icon-chart-pie"></i>Przeglądaj bilans</a></li>
 					<li><a href=""><i class="icon-cog-alt"></i>Ustawienia <i class="icon-down-open"></i></a>
 						<ul>
 							<li><a href="#">Edytuj konto</a></li>
@@ -48,36 +48,49 @@
 			
 				<div class="viewBalanceSheet">
 				
-					<header class="subtitle">
+					<header class="titleBalance">
 						Przeglądaj bilans
-						<div>Wybierz przedział czasowy </div>
-						
 					</header>
 					
 					
+					<div class="period">
+						<label for="period"class="textfieldOperation" style= "width: 180px;"> Przedział czasowy </label>
+						<select id="period" name="payment" size="1">
+							<option value="1"selected >	Ten miesiąc	</option>
+							<option value="2">	Ubiegły miesiąc			</option>
+							<option value="3" >	Ten rok						</option>
+							<option value="4">	Ubiegły rok				</option>
+							<option value="5">	Własny zakres...		</option>
+						</select>
+					</div>
 					
-					
-					
-					
-					
-					
-					<article>
-						<!--
-						<div class="variableName">Suma przychodów:</div>
-						<div class="variableValue"><font color="green">+ </font>4500 zł</div>
-						<div style="clear: both;"></div>
-						
-						<div class="variableName">Suma wydatków:</div>
-						<div class="variableValue"><font color="red">- </font>3200 zł</div>
-						<div style="clear: both;"></div>
-						
-						<div style="border-bottom: 1px solid #4bb063; height: 10px; width: 340px;"></div>
-						
-						<div class="variableName" style="font-weight: 700;">Bilans:</div>
+					<div class="balance">
+						<div class="variableName" style="font-weight: 700;padding-left: 50px;">Bilans:</div>
 						<div class="variableValue" style="font-weight: 700;"><font color="green">+ </font>1300 zł</div>
-						<div style="clear: both;"></div>						
-						-->
-					</article>
+						<div style="clear: both;"></div>	
+						<div class="comment">Gratulacje! Dobrze gospodarujesz swoimi pieniędzmi!</div>
+					</div>
+					
+					<div style="float:left;"></div>	
+					
+					<div class="viewIncomes">
+						<header class="subtitle">
+							Przychody
+						</header>					
+						
+					
+					
+					</div>
+					<div class="viewExpenses">
+						<header class="subtitle">
+							Wydatki
+						</header>					
+					
+					
+					
+					</div>
+					<div style="float:left;"></div>
+
 					
 				</div>
 
