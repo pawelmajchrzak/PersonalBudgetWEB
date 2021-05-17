@@ -67,6 +67,7 @@ h2
 
 input[type=text],
 input[type=password],
+input[type=number],
 input[type=email]
 {
 	width: 350px;
@@ -82,6 +83,7 @@ input[type=email]
 
 input[type=text]:focus,
 input[type=password]:focus,
+input[type=number]:focus,
 input[type=email]:focus
 {
 	border: 2px solid #5BEB3D;
@@ -90,6 +92,7 @@ input[type=email]:focus
 
 input[type=text]:hover,
 input[type=password]:hover,
+input[type=number]:hover,
 input[type=email]:hover
 {
 	background-color: #fff;
@@ -146,8 +149,285 @@ input[type=submit]:hover
 	text-decoration: underline;
 }
 
+.link:visited
+{
+	color: #5BEB3D;
+	text-decoration: none;
+}
+
+.cleanLink,
+.cleanLink:hover,
+.cleanLink:visited
+{
+	color: #000;
+	text-decoration: none;
+}
+
+
 .register
 {
 	margin-left: auto;
 	margin-right: auto;
+}
+
+#mainboard
+{
+	background-color: #fff;
+	margin-left: auto;
+	margin-right: auto;
+	width: 950px;
+	height: 700px;
+	border: 1px solid #eee;
+	border-radius: 10px;
+	padding: 20px 40px;
+	webkit-box-shadow: 0px 0px 21px -6px rgba(122,122,122,1);
+	-moz-box-shadow: 0px 0px 21px -6px rgba(122,122,122,1);
+	box-shadow: 0px 0px 21px -6px rgba(122,122,122,1);
+}
+
+.navigation
+{
+	width: 100%;
+	padding: 10;
+	padding-top: 13px;
+	text-align: center;
+}
+
+ol
+{
+	margin: 0;
+	padding: 0;
+	list-style-type: none;
+	font-size: 18px;
+	height: 35px;
+	line-height: 200%;
+	display: inline-block;
+}
+
+ol a
+{
+	color: #2e2e2e;
+	text-decoration: none;
+	display: block;
+	font-weight: 400px;
+	font-size:20px;
+}
+
+ol > li
+{
+	float: left;
+	width: 230px;
+	height: 40px;
+}
+
+ol > li:hover > a
+{
+	color: #4bb063;
+	border-bottom: 2px solid #4bb063;
+	padding-bottom: 25px;
+}
+
+.balanceField
+{
+	border: 1px solid #e9e9ea;
+	border-radius: 8px;
+	padding: 15px;
+	width: 350px;
+	height: 250px;
+	margin: 10px;
+	margin-top: 35px;
+	background-color: #fcfbfc;
+}
+
+.incomeField
+{
+	border: 1px solid #e9e9ea;
+	border-radius: 8px;
+	padding: 15px;
+	width: 350px;
+	height: 250px;
+	margin: 10px;
+	margin-top: 20px;
+	background-color: #fcfbfc;
+}
+
+.expenseField
+{
+	border: 1px solid #e9e9ea;
+	border-radius: 8px;
+	padding: 15px;
+	width: 494px;
+	height: 552px;
+	margin: 10px;
+	margin-top: 35px;
+	float: left;
+	background-color: #fcfbfc;
+}
+
+.subtitle
+{
+	text-align: center;
+	width: 100%;
+	margin-bottom: 10px;
+	font-size: 22px;
+}
+
+.variableName
+{
+	width: 200px;
+	margin: 5px;
+	margin-top: 20px;
+	float: left;
+	
+	font-size: 18px;
+	padding: 5px;
+	
+}
+
+.variableValue
+{
+	width: 97px;
+	margin: 5px;
+	margin-top: 20px;
+	float: left;
+	
+	font-size: 19px;
+	padding: 7px;
+
+	text-align: right;
+	font-family: 'Lato', sans-serif;
+}
+
+.addExpense
+{
+	border: 1px solid #e9e9ea;
+	border-radius: 8px;
+	padding: 15px;
+	width: 898px;
+	height: 370px;
+	margin: 10px;
+	margin-top: 35px;
+	background-color: #fcfbfc;
+	
+}
+
+.textfieldOperation
+{
+	float: left;
+	width: 180px;
+	font-size: 20px;
+	padding: 10px;
+	margin-top: 10px;
+	line-height: 45px;
+}
+
+.textfieldOperationValue
+{
+	float: left;
+	width: 200px;
+	font-size: 20px;
+	padding: 10px;
+	margin-top: 10px;
+	line-height: 45px;
+	margin-right: 25px;
+}
+
+
+.textfieldOperationValue > input[type=number],
+.textfieldOperationValue > input[type=date]
+{
+	width: 200px;
+	background-color: #f9f9f9;
+	color: #666;
+	border: 2px solid #e8e8e8;
+	border-radius: 5px;
+	font-size: 20px;
+	padding: 10px;
+	box-sizing: border-box;
+	outline: none;
+}
+
+.textfieldOperationValue > input[type=text]
+{
+	width: 645px;
+	background-color: #f9f9f9;
+	color: #666;
+	border: 2px solid #e8e8e8;
+	border-radius: 5px;
+	font-size: 20px;
+	padding: 10px;
+	box-sizing: border-box;
+	outline: none;
+}
+
+#payment
+{
+	background-color: #f9f9f9;
+	color: #666;
+	border: 2px solid #e8e8e8;
+	border-radius: 5px;
+	box-sizing: border-box;
+	outline: none;
+	float: left;
+	width: 200px;
+	font-size: 20px;
+	padding: 10px;
+	margin-top: 20px;
+	line-height: 45px;
+	margin-right: 35px;
+	margin-left: 10px;
+}
+
+#category
+{
+	background-color: #f9f9f9;
+	color: #666;
+	border: 2px solid #e8e8e8;
+	border-radius: 5px;
+	box-sizing: border-box;
+	outline: none;
+	float: left;
+	width: 200px;
+	font-size: 20px;
+	padding: 10px;
+	margin-top: 20px;
+	line-height: 45px;
+	margin-right: 35px;
+	margin-left: 10px;
+}
+
+#category:focus,
+#payment:focus,
+.textfieldOperationValue > input[type=text]:focus,
+.textfieldOperationValue > input[type=date]:focus,
+.textfieldOperationValue > input[type=number]:focus
+{
+	border: 2px solid #5BEB3D;
+	background-color: #fff;
+}
+
+#category:hover,
+#payment:hover,
+.textfieldOperationValue > input[type=text]:hover,
+.textfieldOperationValue > input[type=date]:hover,
+.textfieldOperationValue > input[type=number]:hover
+{
+	background-color: #fff;
+}
+
+.buttonAdd
+{
+	float: left;
+}
+
+.buttonCancel > input[type=submit]
+{
+	float: left;
+	background-color: #b4b4b4;
+}
+
+.buttonCancel > input[type=submit]:hover
+{
+	float: left;
+	background-color: #929292;
 }
