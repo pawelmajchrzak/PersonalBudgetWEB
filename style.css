@@ -227,6 +227,44 @@ ol > li:hover > a
 	padding-bottom: 25px;
 }
 
+ol > li > ul
+{
+	list-style-type: none;
+	padding: 0;
+	margin: 0;
+	height: 40px;
+	display: none;
+	
+}
+
+ol > li:hover > ul
+{
+	display: block;
+	
+}
+
+ol > li > ul > li
+{
+	background-color: #fff;
+	position: relative;
+	z-index: 100;
+}
+
+ol > li > ul > li > a
+{
+	font-size: 16px;
+}
+
+ol > li > ul > li:hover
+{
+	background-color: #4bb063;
+}
+
+ol > li > ul > li:hover > a
+{
+	color: #fff;
+}
+
 .balanceField
 {
 	border: 1px solid #e9e9ea;
@@ -308,7 +346,6 @@ ol > li:hover > a
 	margin: 10px;
 	margin-top: 35px;
 	background-color: #fcfbfc;
-	
 }
 
 .textfieldOperation
@@ -430,4 +467,25 @@ ol > li:hover > a
 {
 	float: left;
 	background-color: #929292;
+}
+
+.viewBalanceSheet
+{
+	border: 1px solid #e9e9ea;
+	border-radius: 8px;
+	padding: 15px;
+	width: 898px;
+	height: 550px;
+	margin: 10px;
+	margin-top: 35px;
+	background-color: #fcfbfc;
+}
+
+.subtitle
+{
+	text-align: center;
+	width: 100%;
+	margin-bottom: 10px;
+	font-size: 22px;
+	
 }
