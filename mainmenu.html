@@ -20,11 +20,11 @@
 
 <body style="height: 910px;">
 
-	<a href=""><div class="button">Wyloguj się</div></a>
+	<a href="login.html"><div class="button">Wyloguj się</div></a>
 	<div style="clear: both;"></div>
 	
 	<header style="width: 950px;">
-		<h1 class="logo"><i class="icon-money"></i>  Budżet osobisty</h1>
+		<a href="mainmenu.html" class="cleanLink"><h1 class="logo"><i class="icon-money"></i>  Budżet osobisty</h1></a>
 	</header>
 	
 	<article>
@@ -40,11 +40,58 @@
 				</ol>
 			</div>
 			<div style="float:left;">
-				<div class="balanceField"></div>
-				<div class="incomeField"></div>
+				<div class="balanceField">
+				
+					<header class="subtitle">
+						Ten miesiąc
+					</header>
+					
+					<article>
+					
+						<div class="variableName">Suma przychodów:</div>
+						<div class="variableValue"><font color="green">+ </font>4500 zł</div>
+						<div style="clear: both;"></div>
+						
+						<div class="variableName">Suma wydatków:</div>
+						<div class="variableValue"><font color="red">- </font>3200 zł</div>
+						<div style="clear: both;"></div>
+						
+						<div style="border-bottom: 1px solid #4bb063; height: 10px; width: 340px;"></div>
+						
+						<div class="variableName" style="font-weight: 700;">Bilans:</div>
+						<div class="variableValue" style="font-weight: 700;"><font color="green">+ </font>1300 zł</div>
+						<div style="clear: both;"></div>						
+					
+					</article>
+					
+				</div>
+				<div class="incomeField">
+				
+					<header class="subtitle">
+						Przychody
+					</header>
+					
+					<article>	
+						Wykres kołowy
+					</article>
+				
+				</div>
 			</div>
-			<div class="expenseField"></div>
+			
+			<div class="expenseField">
+			
+				<header class="subtitle">
+					Wydatki
+				</header>
+				
+				<article>	
+					Wykres kołowy
+				</article>
+			
+			</div>
 			<div style="clear: both;"></div>
+			
+		
 		
 		</div>
 	

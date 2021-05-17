@@ -1,0 +1,163 @@
+<!DOCTYPE HTML>
+<html lang="pl">
+<head>
+	<meta charset="utf-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+	
+	<title>Budżet osobisty</title>
+	
+	<meta name="description" content="Budżet osobisty to aplikacja internetowa, która pozwoli Tobie oraz Twojej rodzinie lepiej zarządzać finansami. Dzięki niej, zobaczysz trendy swoich przychodów i wydatków oraz analizę bilansu - co w pewnością pozwoli Ci podjąć pewne przemyślane kroki w celu polepszenia swojej sytuacji materialnej!" />
+	<meta name="keywords" content="budżet, osobisty, personal, budget, przychody, wydatki, bilans, finanse, rodzinny, aplikacja, internetowa, oszczędności, portfel" />
+	
+	
+	
+	<link rel="stylesheet" href="style.css" type="text/css" />
+	<link rel="preconnect" href="https://fonts.gstatic.com">
+	<link href="https://fonts.googleapis.com/css2?family=Caveat&family=Lato:wght@300;400;700&family=Poppins:wght@200;400&display=swap" rel="stylesheet">
+	<link rel="stylesheet" href="css/fontello.css" type="text/css" />
+	<link rel="icon" href="image/logo.png" type="image/png">
+</head>
+
+<body style="height: 910px;">
+
+	<a href="login.html"><div class="button">Wyloguj się</div></a>
+	<div style="clear: both;"></div>
+	
+	<header style="width: 950px;">
+		<a href="mainmenu.html" class="cleanLink"><h1 class="logo"><i class="icon-money"></i>  Budżet osobisty</h1></a>
+	</header>
+	
+	<article>
+	
+		<div id="mainboard">
+		
+			<div class="navigation">
+				<ol>
+					<li><a href=""><i class="icon-money-1"></i>Dodaj przychód</a></li>
+					<li><a href=""><i class="icon-basket"></i>Dodaj wydatek</a></li>
+					<li><a href=""><i class="icon-chart-pie"></i>Przeglądaj bilans</a></li>
+					<li><a href=""><i class="icon-cog-alt"></i>Ustawienia</a></li>
+				</ol>
+			</div>
+			
+				<div class="addExpense">
+				
+					<header class="subtitle">
+						Dodaj przychód
+					</header>
+					
+					
+					<form>
+						
+						<label style="float:left;">
+							<div class="textfieldOperation"> Kwota </div> 
+							<div class="textfieldOperationValue"><input type="number" name="amount" placeholder="Podaj kwotę w zł" step="5" required></div>
+							<div style="clear: both;"></div>
+						</label>	
+						
+						<label style="float:left;">
+							<div class="textfieldOperation"> Data </div> 
+							<div class="textfieldOperationValue"><input type="date" name="date" placeholder="Podaj datę w formacie rrrr-mm-dd" min="1900-01-01" max="2030-12-31" value="2020-10-12" required></div>
+							<div style="clear: both;"></div>
+						</label>	
+
+						<label style="clear: both;">
+						
+						<div style="float:left;">
+						
+							<label for="payment"class="textfieldOperation"> Sposób płatności </label>
+
+							<select id="payment" name="payment" size="1">
+
+								<option value="none"selected disabled>					</option>
+								<option value="M">Gotówka</option>
+								<option value="C" >Karta płatnicza</option>
+								<option value="T">Przelew/BLIK</option>
+								<option value="O">Inne</option>
+
+							</select>
+
+						</div>		
+						
+						<div style="float:left;">
+						
+							<label for="category"class="textfieldOperation"> Kategoria </label>
+
+							<select id="category" name="category" size="1" required>
+
+								<option value="cat0"selected disabled>					</option>
+								<option value="cat1">	Jedzenie				</option>
+								<option value="cat2">	Mieszkanie			</option>
+								<option value="cat3">	Transport			</option>
+								<option value="cat4">	Telekomunikacja	</option>
+								<option value="cat5">	Opieka zdrowotna	</option>
+								<option value="cat6">	Ubranie				</option>
+								<option value="cat7">	Higiena				</option>
+								<option value="cat8">	Dzieci					</option>
+								<option value="cat9">	Rozrywka			</option>
+								<option value="cat10">	Wycieczka			</option>
+								<option value="cat11">	Szkolenia			</option>
+								<option value="cat12">	Książki				</option>
+								<option value="cat13">	Oszczędności		</option>
+								<option value="cat14">	Emerytura			</option>
+								<option value="cat15">	Spłata długów		</option>
+								<option value="cat16">	Darowizna			</option>
+								<option value="cat17">	Inne wydatki		</option>
+
+							</select>
+
+						</div>	
+						
+						<div style="clear: both;"></div>
+						
+						<label>
+							<div class="textfieldOperation"> Komentarz </div> 
+							<div class="textfieldOperationValue"><input type="text" name="amount" placeholder="Dodaj komentarz" step="5"></div>
+							<div style="clear: both;"></div>
+						</label>
+
+						<div class = "buttonCancel">
+								<input type="submit" value="Anuluj">
+						</div>
+						
+						<div class = "buttonAdd">
+								<input type="submit" value="Dodaj">
+						</div>
+
+						<div style="clear: both;"></div>
+						
+					
+					</form>
+					
+					<article>
+						<!--
+						<div class="variableName">Suma przychodów:</div>
+						<div class="variableValue"><font color="green">+ </font>4500 zł</div>
+						<div style="clear: both;"></div>
+						
+						<div class="variableName">Suma wydatków:</div>
+						<div class="variableValue"><font color="red">- </font>3200 zł</div>
+						<div style="clear: both;"></div>
+						
+						<div style="border-bottom: 1px solid #4bb063; height: 10px; width: 340px;"></div>
+						
+						<div class="variableName" style="font-weight: 700;">Bilans:</div>
+						<div class="variableValue" style="font-weight: 700;"><font color="green">+ </font>1300 zł</div>
+						<div style="clear: both;"></div>						
+						-->
+					</article>
+					
+				</div>
+
+			
+		</div>
+		
+		
+	
+	
+	</article>
+	
+	
+	
+</body>
+</html>
