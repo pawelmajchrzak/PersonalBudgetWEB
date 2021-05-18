@@ -568,3 +568,25 @@ ol > li > ul > li:hover > a
 	background-color: #fcfbfc;
 	float: left;
 }
+
+.viewIncomes > .variableValue
+{
+	margin-left: 80px;
+	margin-top: 0px;
+}
+
+.viewIncomes > .variableName
+{
+	margin-top: 0px;
+}
+
+.viewExpenses > .variableValue
+{
+	margin-left: 80px;
+	margin-top: 0px;
+}
+
+.viewExpenses > .variableName
+{
+	margin-top: 0px;
+}
