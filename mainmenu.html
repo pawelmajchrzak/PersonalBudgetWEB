@@ -27,10 +27,10 @@
 		<a href="mainmenu.html" class="cleanLink"><h1 class="logo"><i class="icon-money"></i>  Budżet osobisty</h1></a>
 	</header>
 	
-	<article>
-	
-		<div id="mainboard">
+	<div id="mainboard">
 		
+		<nav>
+	
 			<div class="navigation">
 				<ol>
 					<li><a href="addIncome.html"><i class="icon-money-1"></i>Dodaj przychód</a></li>
@@ -45,66 +45,92 @@
 					</li>
 				</ol>
 			</div>
-			<div style="float:left;">
-				<div class="balanceField">
+			
+		</nav>
+		
+		<main>
+		
+				<div style="float:left;">
 				
-					<header class="subtitle">
-						Ten miesiąc
-					</header>
+					<article>
+				
+						<div class="balanceField">
+						
+							<header class="subtitle">
+								Ten miesiąc
+							</header>
+							
+							<section>
+							
+								<div class="variableName">Suma przychodów:</div>
+								<div class="variableValue"><font color="green">+ </font>4500 zł</div>
+								<div style="clear: both;"></div>
+								
+								<div class="variableName">Suma wydatków:</div>
+								<div class="variableValue"><font color="red">- </font>3200 zł</div>
+								<div style="clear: both;"></div>
+								
+								<div style="border-bottom: 1px solid #4bb063; height: 10px; width: 340px;"></div>
+								
+								<div class="variableName" style="font-weight: 700;">Bilans:</div>
+								<div class="variableValue" style="font-weight: 700;"><font color="green">+ </font>1300 zł</div>
+								<div style="clear: both;"></div>						
+							
+							</section>
+							
+						</div>
+						
+					</article>
 					
 					<article>
 					
-						<div class="variableName">Suma przychodów:</div>
-						<div class="variableValue"><font color="green">+ </font>4500 zł</div>
-						<div style="clear: both;"></div>
+						<div class="incomeField">
 						
-						<div class="variableName">Suma wydatków:</div>
-						<div class="variableValue"><font color="red">- </font>3200 zł</div>
-						<div style="clear: both;"></div>
+							<header class="subtitle">
+								Przychody
+							</header>
+							
+							<section>	
+								<div class="pie2">
+									<svg viewBox="0 0 32 32">
+									  <circle r="16" cx="16" cy="16" />
+									</svg>
+								</div>
+							</section>
 						
-						<div style="border-bottom: 1px solid #4bb063; height: 10px; width: 340px;"></div>
-						
-						<div class="variableName" style="font-weight: 700;">Bilans:</div>
-						<div class="variableValue" style="font-weight: 700;"><font color="green">+ </font>1300 zł</div>
-						<div style="clear: both;"></div>						
+						</div>
 					
 					</article>
 					
 				</div>
-				<div class="incomeField">
 				
-					<header class="subtitle">
-						Przychody
-					</header>
+				<article>
+				
+					<div class="expenseField">
 					
-					<article>	
-						Wykres kołowy
-					</article>
+						<header class="subtitle">
+							Wydatki
+						</header>
+						
+						<section>
+
+								<div class="pie">
+									<svg viewBox="0 0 32 32">
+									  <circle r="16" cx="16" cy="16" />
+									</svg>
+								</div>
+
+						</section>
+					
+					</div>
 				
-				</div>
-			</div>
-			
-			<div class="expenseField">
-			
-				<header class="subtitle">
-					Wydatki
-				</header>
-				
-				<article>	
-					Wykres kołowy
 				</article>
+				
+				<div style="clear: both;"></div>
+				
+		</main>	
 			
-			</div>
-			<div style="clear: both;"></div>
-			
+	</div>
 		
-		
-		</div>
-	
-	
-	</article>
-	
-	
-	
 </body>
 </html>
