@@ -16,6 +16,7 @@
 	<link href="https://fonts.googleapis.com/css2?family=Caveat&family=Lato:wght@300;400;700&family=Poppins:wght@200;400&display=swap" rel="stylesheet">
 	<link rel="stylesheet" href="css/fontello.css" type="text/css" />
 	<link rel="icon" href="image/logo.png" type="image/png">
+	<script type="text/javascript" src="javaScript.js"> </script>
 </head>
 
 <body style="height: 910px;">
@@ -27,23 +28,37 @@
 		<a href="mainmenu.html" class="cleanLink"><h1 class="logo"><i class="icon-money"></i>  Budżet osobisty</h1></a>
 	</header>
 	
-	<article>
 	
-		<div id="mainboard">
-		
+	
+	<div id="mainboard">
+	
+		<nav>
+	
 			<div class="navigation">
 				<ol>
-					<li><a href=""><i class="icon-money-1"></i>Dodaj przychód</a></li>
-					<li><a href=""><i class="icon-basket"></i>Dodaj wydatek</a></li>
-					<li><a href=""><i class="icon-chart-pie"></i>Przeglądaj bilans</a></li>
-					<li><a href=""><i class="icon-cog-alt"></i>Ustawienia</a></li>
+					<li><a href="addIncome.html"><i class="icon-money-1"></i>Dodaj przychód</a></li>
+					<li><a href="addExpense.html"><i class="icon-basket"></i>Dodaj wydatek</a></li>
+					<li><a href="viewBalanceSheet.html"><i class="icon-chart-pie"></i>Przeglądaj bilans</a></li>
+					<li><a href=""><i class="icon-cog-alt"></i>Ustawienia <i class="icon-down-open"></i></a>
+						<ul>
+							<li><a href="#">Edytuj konto</a></li>
+							<li><a href="#">Preferencje użytkownika</a></li>
+							<li><a href="#">Edytuj/Usuń operację</a></li>
+						</ul>					
+					</li>
 				</ol>
 			</div>
 			
+		</nav>
+		
+		<main>
+		
+			<article>
+		
 				<div class="addExpense">
 				
 					<header class="subtitle">
-						Dodaj przychód
+						Dodaj wydatek
 					</header>
 					
 					
@@ -57,19 +72,19 @@
 						
 						<label style="float:left;">
 							<div class="textfieldOperation"> Data </div> 
-							<div class="textfieldOperationValue"><input type="date" name="date" placeholder="Podaj datę w formacie rrrr-mm-dd" min="1900-01-01" max="2030-12-31" value="2020-10-12" required></div>
+							<div class="textfieldOperationValue"><input type="date" name="date" min="1900-01-01" value="" max="2030-12-31" required id="time"></div>
 							<div style="clear: both;"></div>
 						</label>	
 
-						<label style="clear: both;">
+						<label style="clear: both;"></label>
 						
 						<div style="float:left;">
 						
-							<label for="payment"class="textfieldOperation"> Sposób płatności </label>
+							<label for="payment" class="textfieldOperation"> Sposób płatności </label>
 
 							<select id="payment" name="payment" size="1">
 
-								<option value="none"selected disabled>	</option>
+								<option value="none" selected disabled>	</option>
 								<option value="M">	Gotówka					</option>
 								<option value="C" >	Karta płatnicza			</option>
 								<option value="T">	Przelew/BLIK				</option>
@@ -81,7 +96,7 @@
 						
 						<div style="float:left;">
 						
-							<label for="category"class="textfieldOperation"> Kategoria </label>
+							<label for="category" class="textfieldOperation"> Kategoria </label>
 
 							<select id="category" name="category" size="1" required>
 
@@ -126,38 +141,16 @@
 
 						<div style="clear: both;"></div>
 						
-					
 					</form>
-					
-					<article>
-						<!--
-						<div class="variableName">Suma przychodów:</div>
-						<div class="variableValue"><font color="green">+ </font>4500 zł</div>
-						<div style="clear: both;"></div>
-						
-						<div class="variableName">Suma wydatków:</div>
-						<div class="variableValue"><font color="red">- </font>3200 zł</div>
-						<div style="clear: both;"></div>
-						
-						<div style="border-bottom: 1px solid #4bb063; height: 10px; width: 340px;"></div>
-						
-						<div class="variableName" style="font-weight: 700;">Bilans:</div>
-						<div class="variableValue" style="font-weight: 700;"><font color="green">+ </font>1300 zł</div>
-						<div style="clear: both;"></div>						
-						-->
-					</article>
-					
+				
 				</div>
-
+				
+			</article>
 			
-		</div>
+		</main>
+
 		
-		
-	
-	
-	</article>
-	
-	
-	
+	</div>
+			
 </body>
 </html>
