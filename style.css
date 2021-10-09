@@ -42,7 +42,20 @@ h1.logo
 
 
 
-
+#container
+{
+	background-color: #fff;
+	margin-left: auto;
+	margin-right: auto;
+	width: 500px;
+	height: 440px;
+	border: 1px solid #eee;
+	border-radius: 10px;
+	padding: 20px 40px;
+	webkit-box-shadow: 0px 0px 21px -6px rgba(122,122,122,1);
+	-moz-box-shadow: 0px 0px 21px -6px rgba(122,122,122,1);
+	box-shadow: 0px 0px 21px -6px rgba(122,122,122,1);
+}
 
 h2
 {
@@ -192,9 +205,6 @@ ol > li > ul > li:hover > a
 	border-bottom: 1px solid #4bb063;
 	height: 30px;
 }
-
-
-
 
 .variableName
 {
