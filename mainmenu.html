@@ -6,42 +6,49 @@
 	
 	<title>Budżet osobisty</title>
 	
-	<meta name="description" content="Budżet osobisty to aplikacja internetowa, która pozwoli Tobie oraz Twojej rodzinie lepiej zarządzać finansami. Dzięki niej, zobaczysz trendy swoich przychodów i wydatków oraz analizę bilansu - co w pewnością pozwoli Ci podjąć pewne przemyślane kroki w celu polepszenia swojej sytuacji materialnej!" />
+	<meta name="description" content="Budżet osobisty to aplikacja internetowa, która pozwoli Tobie oraz Twojej rodzinie lepiej zarządzać finansami. Dzięki niej, zobaczysz trendy swoich przychodów i wydatków oraz analizę bilansu - co z pewnością pozwoli Ci podjąć pewne przemyślane kroki w celu polepszenia swojej sytuacji materialnej!" />
 	<meta name="keywords" content="budżet, osobisty, personal, budget, przychody, wydatki, bilans, finanse, rodzinny, aplikacja, internetowa, oszczędności, portfel" />
 	
 	
 	<link rel="stylesheet" href="css/bootstrap.min.css">
-	<link rel="stylesheet" href="style.css" type="text/css" />
+
 	<link rel="preconnect" href="https://fonts.gstatic.com">
 	<link href="https://fonts.googleapis.com/css2?family=Caveat&family=Lato:wght@300;400;700&family=Poppins:wght@200;400&display=swap" rel="stylesheet">
 	<link rel="stylesheet" href="css/fontello.css" type="text/css" />
 	<link rel="icon" href="image/logo.png" type="image/png">
+	<link rel="stylesheet" href="style.css" type="text/css" />
 </head>
 
 <body>
-
 	<a href="login.html"><div class="button">Wyloguj się</div></a>
 	<div style="clear: both;"></div>
 	
-	<header class="col-12 col-lg-11 col-xl-10 col-xxl-8 px-3">
+	<header class="col-12 col-lg-11 col-xl-10 col-xxl-8 px-3 m-auto">
 		<h1 class="logo"><a href="mainmenu.html" class="cleanLink"><i class="icon-money"></i>  Budżet osobisty</a></h1>
 	</header>
 	
-	<div class="col-12 col-lg-11 col-xl-10 col-xxl-8 bg-white m-2 m-lg-auto border border-light rounded p-2 shadow-lg">	
+	<div class="col-lg-11 col-xl-10 col-xxl-8 bg-white m-2 m-lg-auto border border-light rounded p-2 shadow-lg">	
 		
-		<nav class="navbar navbar-light text-center navbar-expand-lg pt-3 px-3 ">
+		<nav class="navbar navbar-light text-center navbar-expand-lg pt-3 px-3 mb-4">
 	
-			<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#menu" aria-controls="menu" aria-expanded="false" aria-label="Przełącznik nawigacji">
+			<button class="navbar-toggler"
+					type="button"
+					data-bs-toggle="collapse"
+					data-bs-target="#menu"
+					aria-controls="menu"
+					aria-expanded="false"
+					aria-label="Przełącznik nawigacji"
+			>
 				<span class="navbar-toggler-icon"></span>
 			</button>
 			
 			<div class="collapse navbar-collapse" id="menu">
 			
 				<ol class="navbar-nav m-lg-auto col-12">
-					<li class="nav-item col-3"><a class="nav-link" href="addIncome.html"><i class="icon-money-1"></i>Dodaj przychód</a></li>
-					<li class="nav-item col-3"><a class="nav-link" href="addExpense.html"><i class="icon-basket"></i>Dodaj wydatek</a></li>
-					<li class="nav-item col-3"><a class="nav-link" href="viewBalanceSheet.html"><i class="icon-chart-pie"></i>Przeglądaj bilans</a></li>
-					<li class="nav-item dropdown col-3"><a class="nav-link" href="" data-toggle="dropdown" role="button" aria-expanded="false" id="submenu" aria-haspopup="true"><i class="icon-cog-alt"></i>Ustawienia <i class="icon-down-open"></i></a>
+					<li class="nav-item col-lg-3"><a class="nav-link" href="addIncome.html"><i class="icon-money-1"></i>Dodaj przychód</a></li>
+					<li class="nav-item col-lg-3"><a class="nav-link" href="addExpense.html"><i class="icon-basket"></i>Dodaj wydatek</a></li>
+					<li class="nav-item col-lg-3"><a class="nav-link" href="viewBalanceSheet.html"><i class="icon-chart-pie"></i>Przeglądaj bilans</a></li>
+					<li class="nav-item dropdown col-lg-3"><a class="nav-link" href="" data-toggle="dropdown" role="button" aria-expanded="false" id="submenu" aria-haspopup="true"><i class="icon-cog-alt"></i>Ustawienia <i class="icon-down-open"></i></a>
 						<ul class="dropdown-menu" aria-labelledby="submenu">
 							<li><a class="dropdown-item" href="#">Edytuj konto</a></li>
 							<li><a class="dropdown-item" href="#">Preferencje użytkownika</a></li>
@@ -56,13 +63,13 @@
 		<main>
 	
 			<div class="row">
-				<div class="col-12 col-lg-5">
+				<div class="col-12 col-lg-5" >
 				
 					<article>
 				
-						<div class="balanceField">
+						<div class="my-3 border border-success rounded p-2">
 						
-							<header class="subtitle">
+							<header class="h4 text-center mb-3">
 								Ten miesiąc
 							</header>
 							
@@ -90,9 +97,9 @@
 					
 					<article>
 					
-						<div class="incomeField">
+						<div class="my-3 border border-success rounded p-2">
 						
-							<header class="subtitle">
+							<header class="h4 text-center mb-3">
 								Przychody
 							</header>
 							
@@ -110,30 +117,29 @@
 					
 				</div>
 				
-				
-				
-					<div class="col-12 col-lg-7">
-					
+				<div class="col-12 col-lg-7">
 					<article>
-						<header class="subtitle">
-							Wydatki
-						</header>
-						
-						<section>
+						<div class="my-3 border border-success rounded p-2">
+							
+							
+								<header class="h4 text-center mb-3">
+									Wydatki
+								</header>
+								
+								<section>
 
-								<div class="pie">
-									<svg viewBox="0 0 32 32">
-									  <circle r="16" cx="16" cy="16" />
-									</svg>
-								</div>
+										<div class="pie">
+											<svg viewBox="0 0 32 32">
+											  <circle r="16" cx="16" cy="16" />
+											</svg>
+										</div>
 
-						</section>
+								</section>
+							
+							
+						</div>
 					</article>
-					
-					</div>
-				
-				
-				
+				</div>
 			</div>
 				
 		</main>	
