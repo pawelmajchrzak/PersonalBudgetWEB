@@ -6,11 +6,11 @@
 	
 	<title>Budżet osobisty</title>
 	
-	<meta name="description" content="Budżet osobisty to aplikacja internetowa, która pozwoli Tobie oraz Twojej rodzinie lepiej zarządzać finansami. Dzięki niej, zobaczysz trendy swoich przychodów i wydatków oraz analizę bilansu - co w pewnością pozwoli Ci podjąć pewne przemyślane kroki w celu polepszenia swojej sytuacji materialnej!" />
+	<meta name="description" content="Budżet osobisty to aplikacja internetowa, która pozwoli Tobie oraz Twojej rodzinie lepiej zarządzać finansami. Dzięki niej, zobaczysz trendy swoich przychodów i wydatków oraz analizę bilansu - co z pewnością pozwoli Ci podjąć pewne przemyślane kroki w celu polepszenia swojej sytuacji materialnej!" />
 	<meta name="keywords" content="budżet, osobisty, personal, budget, przychody, wydatki, bilans, finanse, rodzinny, aplikacja, internetowa, oszczędności, portfel" />
 	
 	
-	
+	<link rel="stylesheet" href="css/bootstrap.min.css">
 	<link rel="stylesheet" href="style.css" type="text/css" />
 	<link rel="preconnect" href="https://fonts.gstatic.com">
 	<link href="https://fonts.googleapis.com/css2?family=Caveat&family=Lato:wght@300;400;700&family=Poppins:wght@200;400&display=swap" rel="stylesheet">
@@ -18,34 +18,46 @@
 	<link rel="icon" href="image/logo.png" type="image/png">
 </head>
 
-<body style="height: 1420px;">
+<body>
 
 	<a href="login.html"><div class="button">Wyloguj się</div></a>
 	<div style="clear: both;"></div>
 	
-	<header style="width: 950px;">
-		<a href="mainmenu.html" class="cleanLink"><h1 class="logo"><i class="icon-money"></i>  Budżet osobisty</h1></a>
+	<header class="col-12 col-lg-11 col-xl-10 col-xxl-8 px-3 m-auto">
+		<h1 class="logo"><a href="mainmenu.html" class="cleanLink"><i class="icon-money"></i>  Budżet osobisty</a></h1>
 	</header>
 	
-	<div id="mainboard" style="height:1200px;">
+	<div class="col-lg-11 col-xl-10 col-xxl-8 bg-white m-2 m-lg-auto border border-light rounded p-2 shadow-lg">
 		
-		<nav>
-		
-			<div class="navigation">
-				<ol>
-					<li><a href="addIncome.html"><i class="icon-money-1"></i>Dodaj przychód</a></li>
-					<li ><a href="addExpense.html"><i class="icon-basket"></i>Dodaj wydatek</a></li>
-					<li ><a href="viewBalanceSheet.html"><i class="icon-chart-pie"></i>Przeglądaj bilans</a></li>
-					<li><a href=""><i class="icon-cog-alt"></i>Ustawienia <i class="icon-down-open"></i></a>
-						<ul>
-							<li><a href="#">Edytuj konto</a></li>
-							<li><a href="#">Preferencje użytkownika</a></li>
-							<li><a href="#">Edytuj/Usuń operację</a></li>
+		<nav class="navbar navbar-light text-center navbar-expand-lg pt-3 px-3 mb-4">
+	
+			<button class="navbar-toggler"
+					type="button"
+					data-bs-toggle="collapse"
+					data-bs-target="#menu"
+					aria-controls="menu"
+					aria-expanded="false"
+					aria-label="Przełącznik nawigacji"
+			>
+				<span class="navbar-toggler-icon"></span>
+			</button>
+			
+			<div class="collapse navbar-collapse" id="menu">
+			
+				<ol class="navbar-nav m-lg-auto col-12">
+					<li class="nav-item col-lg-3"><a class="nav-link" href="addIncome.html"><i class="icon-money-1"></i>Dodaj przychód</a></li>
+					<li class="nav-item col-lg-3"><a class="nav-link" href="addExpense.html"><i class="icon-basket"></i>Dodaj wydatek</a></li>
+					<li class="nav-item col-lg-3"><a class="nav-link" href="viewBalanceSheet.html"><i class="icon-chart-pie"></i>Przeglądaj bilans</a></li>
+					<li class="nav-item dropdown col-lg-3"><a class="nav-link" href="" data-toggle="dropdown" role="button" aria-expanded="false" id="submenu" aria-haspopup="true"><i class="icon-cog-alt"></i>Ustawienia <i class="icon-down-open"></i></a>
+						<ul class="dropdown-menu" aria-labelledby="submenu">
+							<li><a class="dropdown-item" href="#">Edytuj konto</a></li>
+							<li><a class="dropdown-item" href="#">Preferencje użytkownika</a></li>
+							<li><a class="dropdown-item" href="#">Edytuj/Usuń operację</a></li>
 						</ul>					
 					</li>
 				</ol>
 			</div>
-		
+			
 		</nav>
 		
 		<main>
@@ -206,6 +218,9 @@
 		</main>
 
 	</div>
+	
+	<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
+	<script src="js/bootstrap.min.js"></script>
 
 </body>
 </html>
