@@ -62,42 +62,56 @@
 		
 		<main>
 		
-			<article>
 			
-				<div class="viewBalanceSheet">
+			
+			<div class="container">
 				
-					<header class="titleBalance">
+				<div class="row px-2">
+					<div class="col-12 border border-success bg-light rounded p-3 text-center h3">
 						Przeglądaj bilans
-					</header>
-					
-					<section>
-						<div class="period">
-							<label for="period" class="textfieldOperation" style= "width: 180px;"> Przedział czasowy </label>
-							<select id="period" name="payment" size="1">
-								<option value="1" selected >	Ten miesiąc</option>
-								<option value="2">	Ubiegły miesiąc			 </option>
-								<option value="3" >	Ten rok						 </option>
-								<option value="4">	Ubiegły rok				 </option>
-								<option value="5">	Własny zakres...		 </option>
-							</select>
+					</div>
+				</div>
+				
+				<div class="row">
+					<div class="col-12 col-lg-6 p-2">
+						<div class="border border-success bg-light rounded p-3">
+							<section>
+								XXX
+								
+								<label for="period" class="textfieldOperation" style= "width: 180px;"> Przedział czasowy </label>
+								<select id="period" name="payment" size="1">
+									<option value="1" selected >	Ten miesiąc</option>
+									<option value="2">	Ubiegły miesiąc			 </option>
+									<option value="3" >	Ten rok						 </option>
+									<option value="4">	Ubiegły rok				 </option>
+									<option value="5">	Własny zakres...		 </option>
+								</select>
+								
+							</section>
 						</div>
-					</section>
-					
-					<section>
-						<div class="balance">
-							<div class="variableName" style="font-weight: 700;padding-left: 50px;">Bilans:</div>
-							<div class="variableValue" style="font-weight: 700;"><font color="green">+ </font>1300 zł</div>
-							<div style="clear: both;"></div>	
-							<div class="comment">Gratulacje! Dobrze gospodarujesz swoimi pieniędzmi!</div>
+					</div>
+					<div class="col-12 col-lg-6 p-2">
+						<div class="border border-success bg-light rounded p-3">
+							<section>
+								XXX
+								
+								<div class="variableName" style="font-weight: 700;padding-left: 50px;">Bilans:</div>
+								<div class="variableValue" style="font-weight: 700;"><font color="green">+ </font>1300 zł</div>
+								<div style="clear: both;"></div>	
+								<div class="comment">Gratulacje! Dobrze gospodarujesz swoimi pieniędzmi!</div>
+								
+							</section>
 						</div>
-					</section>
-					
-					<div style="float:left;"></div>	
-					
-					<section>
-						<div class="viewIncomes">
-							<header class="subtitle">
-								Przychody
+					</div>
+				</div>
+				
+				<div class="row">
+					<div class="col-12 col-lg-6 p-2">
+						<div class="border border-success bg-light rounded p-3">
+							<section>
+								
+							<header class="h4 text-center mb-3">
+									Przychody
 							</header>					
 							
 							<div class="variableName">Wynagrodzenie:</div>
@@ -121,99 +135,101 @@
 							<div class="variableName" style="font-weight: 700;">Suma:</div>
 							<div class="variableValue" style="font-weight: 700;"><font color="green">+ </font>4975 zł</div>
 							<div style="clear: both;"></div>
-						
+								
+							</section>
 						</div>
-					</section>
-					
-					<section>
-						<div class="viewExpenses"  style="height:810px;">
-							<header class="subtitle">
-								Wydatki
-							</header>		
+					</div>
+					<div class="col-12 col-lg-6 p-2">
+						<div class="border border-success bg-light rounded p-3">
+							<section>
+								<header class="h4 text-center mb-3">
+									Wydatki
+								</header>		
 
-							<div class="variableName">Jedzenie:</div>
-							<div class="variableValue"><font color="red">- </font>3200 zł</div>
-							<div style="clear: both;"></div>
-							
-							<div class="variableName">Mieszkanie:</div>
-							<div class="variableValue"><font color="red">- </font>125 zł</div>
-							<div style="clear: both;"></div>
+								<div class="variableName">Jedzenie:</div>
+								<div class="variableValue"><font color="red">- </font>3200 zł</div>
+								<div style="clear: both;"></div>
+								
+								<div class="variableName">Mieszkanie:</div>
+								<div class="variableValue"><font color="red">- </font>125 zł</div>
+								<div style="clear: both;"></div>
 
-							<div class="variableName">Transport:</div>
-							<div class="variableValue"><font color="red">- </font>350 zł</div>
-							<div style="clear: both;"></div>
+								<div class="variableName">Transport:</div>
+								<div class="variableValue"><font color="red">- </font>350 zł</div>
+								<div style="clear: both;"></div>
 
-							<div class="variableName">Telekomunikacja:</div>
-							<div class="variableValue"><font color="red">- </font>0 zł</div>
-							<div style="clear: both;"></div>
-							
-							<div class="variableName">Opieka zdrowotna:</div>
-							<div class="variableValue"><font color="red">- </font>0 zł</div>
-							<div style="clear: both;"></div>
-							
-							<div class="variableName">Ubranie:</div>
-							<div class="variableValue"><font color="red">- </font>0 zł</div>
-							<div style="clear: both;"></div>
-							
-							<div class="variableName">Higiena:</div>
-							<div class="variableValue"><font color="red">- </font>0 zł</div>
-							<div style="clear: both;"></div>
-							
-							<div class="variableName">Dzieci:</div>
-							<div class="variableValue"><font color="red">-</font>0 zł</div>
-							<div style="clear: both;"></div>
-							
-							<div class="variableName">Rozrywka:</div>
-							<div class="variableValue"><font color="red">- </font>0 zł</div>
-							<div style="clear: both;"></div>
-							
-							<div class="variableName">Wycieczka:</div>
-							<div class="variableValue"><font color="red">- </font>0 zł</div>
-							<div style="clear: both;"></div>
-							
-							<div class="variableName">Szkolenia:</div>
-							<div class="variableValue"><font color="red">- </font>0 zł</div>
-							<div style="clear: both;"></div>
-							
-							<div class="variableName">Książki:</div>
-							<div class="variableValue"><font color="red">- </font>0 zł</div>
-							<div style="clear: both;"></div>
-							
-							<div class="variableName">Oszczędności:</div>
-							<div class="variableValue"><font color="red">- </font>0 zł</div>
-							<div style="clear: both;"></div>
-							
-							<div class="variableName">Emerytura:</div>
-							<div class="variableValue"><font color="red">- </font>0 zł</div>
-							<div style="clear: both;"></div>
-							
-							<div class="variableName">Spłata długów:</div>
-							<div class="variableValue"><font color="red">- </font>0 zł</div>
-							<div style="clear: both;"></div>
-							
-							<div class="variableName">Darowizna:</div>
-							<div class="variableValue"><font color="red">- </font>0 zł</div>
-							<div style="clear: both;"></div>
-							
-							<div class="variableName">Inne wydatki:</div>
-							<div class="variableValue"><font color="red">- </font>0 zł</div>
-							<div style="clear: both;"></div>
-							
-							
-							<div style="border-bottom: 1px solid #4bb063; height: 10px; width: 420px;"></div>
-							
-							<div class="variableName" style="font-weight: 700;">Suma:</div>
-							<div class="variableValue" style="font-weight: 700;"><font color="red">- </font>3675 zł</div>
-							<div style="clear: both;"></div>
-						
+								<div class="variableName">Telekomunikacja:</div>
+								<div class="variableValue"><font color="red">- </font>0 zł</div>
+								<div style="clear: both;"></div>
+								
+								<div class="variableName">Opieka zdrowotna:</div>
+								<div class="variableValue"><font color="red">- </font>0 zł</div>
+								<div style="clear: both;"></div>
+								
+								<div class="variableName">Ubranie:</div>
+								<div class="variableValue"><font color="red">- </font>0 zł</div>
+								<div style="clear: both;"></div>
+								
+								<div class="variableName">Higiena:</div>
+								<div class="variableValue"><font color="red">- </font>0 zł</div>
+								<div style="clear: both;"></div>
+								
+								<div class="variableName">Dzieci:</div>
+								<div class="variableValue"><font color="red">-</font>0 zł</div>
+								<div style="clear: both;"></div>
+								
+								<div class="variableName">Rozrywka:</div>
+								<div class="variableValue"><font color="red">- </font>0 zł</div>
+								<div style="clear: both;"></div>
+								
+								<div class="variableName">Wycieczka:</div>
+								<div class="variableValue"><font color="red">- </font>0 zł</div>
+								<div style="clear: both;"></div>
+								
+								<div class="variableName">Szkolenia:</div>
+								<div class="variableValue"><font color="red">- </font>0 zł</div>
+								<div style="clear: both;"></div>
+								
+								<div class="variableName">Książki:</div>
+								<div class="variableValue"><font color="red">- </font>0 zł</div>
+								<div style="clear: both;"></div>
+								
+								<div class="variableName">Oszczędności:</div>
+								<div class="variableValue"><font color="red">- </font>0 zł</div>
+								<div style="clear: both;"></div>
+								
+								<div class="variableName">Emerytura:</div>
+								<div class="variableValue"><font color="red">- </font>0 zł</div>
+								<div style="clear: both;"></div>
+								
+								<div class="variableName">Spłata długów:</div>
+								<div class="variableValue"><font color="red">- </font>0 zł</div>
+								<div style="clear: both;"></div>
+								
+								<div class="variableName">Darowizna:</div>
+								<div class="variableValue"><font color="red">- </font>0 zł</div>
+								<div style="clear: both;"></div>
+								
+								<div class="variableName">Inne wydatki:</div>
+								<div class="variableValue"><font color="red">- </font>0 zł</div>
+								<div style="clear: both;"></div>
+								
+								
+								<div style="border-bottom: 1px solid #4bb063; height: 10px; width: 420px;"></div>
+								
+								<div class="variableName" style="font-weight: 700;">Suma:</div>
+								<div class="variableValue" style="font-weight: 700;"><font color="red">- </font>3675 zł</div>
+								<div style="clear: both;"></div>
+							</section>
 						</div>
-					</section>
-					
-					<div style="float:left;"></div>
-					
+					</div>
 				</div>
+					
 
-			</article>
+					
+			</div>
+
+			
 			
 		</main>
 
