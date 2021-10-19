@@ -6,26 +6,6 @@ body
 	margin-bottom:50px;
 }
 
-.button
-{
-	margin-top: 20px;
-	margin-right: 50px;
-	float: right;
-	width: 150px;
-	padding:8px;
-	border: 1px solid #d6d6d6;
-	border-radius: 10px;
-	font-family: 'Poppins', sans-serif;
-	font-weight: 200;
-	color: #000;
-	text-align: center;
-}
-
-.button:hover
-{
-	background-color: #e6e6e6;
-}
-
 h1.logo
 {
 	font-size: 40px;
@@ -36,36 +16,6 @@ h1.logo
 	margin-bottom: 22px;
 }
 
-
-
-
-
-
-
-#container
-{
-	background-color: #fff;
-	margin-left: auto;
-	margin-right: auto;
-	width: 500px;
-	height: 440px;
-	border: 1px solid #eee;
-	border-radius: 10px;
-	padding: 20px 40px;
-	webkit-box-shadow: 0px 0px 21px -6px rgba(122,122,122,1);
-	-moz-box-shadow: 0px 0px 21px -6px rgba(122,122,122,1);
-	box-shadow: 0px 0px 21px -6px rgba(122,122,122,1);
-}
-
-h2
-{
-	font-weight: 400;
-	letter-spacing: 2px;
-	font-size: 28px;
-	line-height: 28px;
-}
-
-
 select:hover,
 input[type=text]:focus,
 input[type=password]:focus,
@@ -73,7 +23,6 @@ input[type=email]:focus,
 input[type=number]:focus
 {
 	border: 1px solid #5BEB3D;
-	
 }
 
 select:hover,
@@ -83,47 +32,6 @@ input[type=email]:hover,
 input[type=number]:hover
 {
 	border: 1px solid #5BEB3D;
-}
-
-
-input[type=submit]
-{
-	margin-left: 100px;
-	width: 300px;
-	background-color: #39C91B;
-	color: white;
-	border: none;
-	border-radius: 5px;
-	font-size: 20px;
-	padding: 12px;
-	margin-top: 23px;
-	cursor: pointer;
-	letter-spacing: 2px;
-	outline: none;
-}
-
-input[type=submit]:hover
-{
-	background-color: #15971b;
-}
-
-
-.textfield
-{
-	float: left;
-	width: 100px;
-	font-size: 20px;
-	padding: 10px;
-	margin-top: 10px;
-	line-height: 45px;
-}
-
-#regulations
-{
-	margin-top: 7px;
-	margin-left: 70px;
-	line-height: 25px;
-	font-size: 15px;
 }
 
 .link
@@ -151,19 +59,6 @@ input[type=submit]:hover
 	text-decoration: none;
 }
 
-
-.register
-{
-	margin-left: auto;
-	margin-right: auto;
-}
-
-
-
-
-
-
-
 ol > li
 {
 	height: 55px;
@@ -180,8 +75,6 @@ ol > li:hover > ul
 	display: block;
 }
 
-
-
 ol > li > ul > li > a
 {
 	font-size: 16px;
@@ -193,281 +86,6 @@ ol > li > ul > li:hover > a
 	border-bottom: 1px solid #4bb063;
 	height: 30px;
 }
-
-.variableName
-{
-	width: 200px;
-	margin: 5px;
-	margin-top: 20px;
-	float: left;
-	
-	font-size: 18px;
-	padding: 5px;
-	
-}
-
-.variableValue
-{
-	width: 97px;
-	margin: 5px;
-	margin-top: 20px;
-	float: left;
-	
-	font-size: 19px;
-	padding: 7px;
-
-	text-align: right;
-	font-family: 'Lato', sans-serif;
-}
-
-.addExpense
-{
-	border: 1px solid #e9e9ea;
-	border-radius: 8px;
-	padding: 15px;
-	width: 898px;
-	height: 370px;
-	margin: 10px;
-	margin-top: 35px;
-	background-color: #fcfbfc;
-}
-
-
-
-
-
-.textfieldOperationValue
-{
-	float: left;
-	width: 200px;
-	font-size: 20px;
-	padding: 10px;
-	margin-top: 10px;
-	line-height: 45px;
-	margin-right: 25px;
-}
-
-
-.textfieldOperationValue > input[type=number],
-.textfieldOperationValue > input[type=date]
-{
-	width: 200px;
-	background-color: #f9f9f9;
-	color: #666;
-	border: 2px solid #e8e8e8;
-	border-radius: 5px;
-	font-size: 20px;
-	padding: 10px;
-	box-sizing: border-box;
-	outline: none;
-}
-
-.textfieldOperationValue > input[type=text]
-{
-	width: 645px;
-	background-color: #f9f9f9;
-	color: #666;
-	border: 2px solid #e8e8e8;
-	border-radius: 5px;
-	font-size: 20px;
-	padding: 10px;
-	box-sizing: border-box;
-	outline: none;
-}
-
-#payment
-{
-	background-color: #f9f9f9;
-	color: #666;
-	border: 2px solid #e8e8e8;
-	border-radius: 5px;
-	box-sizing: border-box;
-	outline: none;
-	float: left;
-	width: 200px;
-	font-size: 20px;
-	padding: 10px;
-	margin-top: 20px;
-	line-height: 45px;
-	margin-right: 35px;
-	margin-left: 10px;
-}
-
-#category
-{
-	background-color: #f9f9f9;
-	color: #666;
-	border: 2px solid #e8e8e8;
-	border-radius: 5px;
-	box-sizing: border-box;
-	outline: none;
-	float: left;
-	width: 200px;
-	font-size: 20px;
-	padding: 10px;
-	margin-top: 20px;
-	line-height: 45px;
-	margin-right: 35px;
-	margin-left: 10px;
-}
-
-#period
-{
-	background-color: #f9f9f9;
-	color: #666;
-	border: 2px solid #e8e8e8;
-	border-radius: 5px;
-	box-sizing: border-box;
-	outline: none;
-	float: left;
-	width: 200px;
-	font-size: 20px;
-	padding: 10px;
-	margin-top: 20px;
-	line-height: 45px;
-	margin-right: 10px;
-	margin-left: 5px;
-}
-
-#category:focus,
-#payment:focus,
-#period:focus,
-.textfieldOperationValue > input[type=text]:focus,
-.textfieldOperationValue > input[type=date]:focus,
-.textfieldOperationValue > input[type=number]:focus
-{
-	border: 2px solid #5BEB3D;
-	background-color: #fff;
-}
-
-#category:hover,
-#payment:hover,
-#period:hover,
-.textfieldOperationValue > input[type=text]:hover,
-.textfieldOperationValue > input[type=date]:hover,
-.textfieldOperationValue > input[type=number]:hover
-{
-	background-color: #fff;
-}
-
-.buttonAdd
-{
-	float: left;
-}
-
-.buttonCancel > input[type=submit]
-{
-	float: left;
-	background-color: #b4b4b4;
-}
-
-.buttonCancel > input[type=submit]:hover
-{
-	float: left;
-	background-color: #929292;
-}
-
-.viewBalanceSheet
-{
-	padding: 0 10px;
-	height: 550px;
-	margin-top: 35px;
-	
-}
-
-.titleBalance
-{
-	border: 1px solid #e9e9ea;
-	background-color: #fcfbfc;
-	border-radius: 8px;
-
-	padding: 15px 0px;
-	text-align: center;
-	width: 100%;
-	margin-bottom: 10px;
-	font-size: 28px;
-	letter-spacing: 4px;
-	height: 40px;
-}
-
-.period
-{
-	border: 1px solid #e9e9ea;
-	border-radius: 8px;
-	padding: 15px;
-	width: 423px;
-	height: 90px;
-	margin: 15px 0px ;
-	background-color: #fcfbfc;
-	float: left;
-}
-
-.balance
-{
-	border: 1px solid #e9e9ea;
-	border-radius: 8px;
-	padding: 0 15px;
-	width: 423px;
-	height: 120px;
-	margin: 15px 0px ;
-	margin-left:20px;
-	background-color: #fcfbfc;
-	float: left;
-}
-
-.comment
-{
-	font-size: 14px;
-	text-align: center;
-	margin-top: 15px;
-}
-
-.viewIncomes
-{
-	border: 1px solid #e9e9ea;
-	border-radius: 8px;
-	padding: 15px;
-	width: 423px;
-	height: 300px;
-	margin: 15px 0px ;
-	margin-right: 20px;
-	background-color: #fcfbfc;
-	float: left;
-}
-
-.viewExpenses
-{
-	border: 1px solid #e9e9ea;
-	border-radius: 8px;
-	padding: 15px;
-	width: 423px;
-	height: 300px;
-	margin: 15px 0px ;
-	background-color: #fcfbfc;
-	float: left;
-}
-
-.viewIncomes > .variableValue
-{
-	margin-left: 80px;
-	margin-top: 0px;
-}
-
-.viewIncomes > .variableName
-{
-	margin-top: 0px;
-}
-
-.viewExpenses > .variableValue
-{
-	margin-left: 80px;
-	margin-top: 0px;
-}
-
-.viewExpenses > .variableName
-{
-	margin-top: 0px;
-} 	
 
 .pie {
 	margin-left: auto;
@@ -515,49 +133,3 @@ circle {
 {
 	min-height: 57px;
 }
-
-.list-group-item-dark
-{
-	background-color: #373a3d;
-	color: white;
-}
-
-.list-group-item-dark:hover
-{
-	background-color: #91a33b !important;
-	
-}
-
-.list-group .active
-{
-	background-color: #91a33b !important;
-	cursor: default;
-}
-
-@media (max-width: 575px)
-{
-	.wpis
-	{
-		margin: 40px 20px;
-		text-align: left;
-		font-size: 15px;
-	}
-	
-	.float-left, .float-right
-	{
-		max-width: 50%;
-	}
-	
-	.blockquote
-	{
-		font-size: 17px;
-		
-		
-	}
-	
-	.list-group
-	{
-		text-align: center;
-	}
-}
-
