@@ -70,7 +70,7 @@
 				
 					<div class="col-12 border border-success bg-light rounded p-3 ">
 						<header class="h3 text-center mb-5">
-							Dodaj wydatek
+							Dodaj przychód
 						</header>
 						
 						<form>
@@ -79,14 +79,14 @@
 								<div class="col-12 col-lg-6">
 									<div class="input-group mb-3">
 										<span class="input-group-text w-50">Kwota</span>
-										<input type="number" class="form-control" placeholder="Podaj kwotę w zł" aria-label="Amount" required>
+										<input type="number" class="form-control" placeholder="Podaj kwotę w zł" aria-label="Amount" aria-describedby="amount" required>
 									</div>
 								</div>
 								
 								<div class="col-12 col-lg-6">
 									<div class="input-group mb-3">
 										<span class="input-group-text w-50">Data</span>
-										<input type="date" class="form-control" aria-label="Date" name="date" min="1900-01-01" value="" max="2030-12-31" required>
+										<input type="date" class="form-control" aria-label="Date" aria-describedby="date" name="date" min="1900-01-01" value="" max="2030-12-31" required>
 									</div>
 								</div>
 							</div>
@@ -114,24 +114,10 @@
 										<select class="form-select" aria-label="category">
 
 											<option value="cat0" selected disabled>	</option>
-											<option value="cat1">	Jedzenie				</option>
-											<option value="cat2">	Mieszkanie			</option>
-											<option value="cat3">	Transport				</option>
-											<option value="cat4">	Telekomunikacja	</option>
-											<option value="cat5">	Opieka zdrowotna	</option>
-											<option value="cat6">	Ubranie					</option>
-											<option value="cat7">	Higiena					</option>
-											<option value="cat8">	Dzieci					</option>
-											<option value="cat9">	Rozrywka				</option>
-											<option value="cat10">	Wycieczka				</option>
-											<option value="cat11">	Szkolenia				</option>
-											<option value="cat12">	Książki					</option>
-											<option value="cat13">	Oszczędności			</option>
-											<option value="cat14">	Emerytura				</option>
-											<option value="cat15">	Spłata długów		</option>
-											<option value="cat16">	Darowizna				</option>
-											<option value="cat17">	Inne wydatki			</option>
-
+											<option value="cat1">	Wynagrodzenie			</option>
+											<option value="cat2">	Odsetki bankowe			</option>
+											<option value="cat3">	Sprzedaż online			</option>
+											<option value="cat4">	Inne					</option>
 										</select>								
 									</div>
 								</div>
@@ -142,7 +128,7 @@
 								<div class="col-12">
 									<div class="input-group mb-3">
 										<span class="input-group-text">Komentarz</span>
-										<input type="text" class="form-control" placeholder="Dodaj komentarz" aria-label="Comment">
+										<input type="text" class="form-control" placeholder="Dodaj komentarz" aria-label="Comment" aria-describedby="comment">
 									</div>
 								</div>
 							</div>
