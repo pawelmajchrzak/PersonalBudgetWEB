@@ -30,37 +30,34 @@
 	
 		<div class="col-md-8 col-lg-7 col-xl-6 col-xxl-5 bg-white m-2 m-md-auto border border-light rounded p-2 shadow-lg">
 		
-			<header>
-				<h2>Logowanie</h2>
+			<header class="h3 text-start m-3" style="letter-spacing: 2px;">
+				Logowanie
 			</header>
 			
 			<form>
 
-				<label>
-					<div class="textfield"> E-mail </div> 
-					<div class="textfield"> <input type="email" name="email" placeholder="Podaj adres e-mail" required></div>
-					<div style="clear: both;"></div>
-				</label>
-				
-				<label>
-				<div class="textfield"> Hasło </div> 
-				<div class="textfield"> <input type="password" name="password" placeholder="Podaj hasło" required></div>
-				<div style="clear: both;"></div>
-				</label>
-				
-				<div id="regulations">
-					<br />
-					<a href="" class="link"> Przypomnienie hasła </a>
-					<br />
-					Nie masz konta? <a href="registration.html" class="link">Zarejestruj się</a>
+				<div class="input-group p-3 m-auto">
+					<span class="input-group-text w-25">E-mail</span>
+					<input type="e-mail" class="form-control" placeholder="Podaj adres E-mail" aria-label="Email" aria-describedby="email" required>
 				</div>
 
-				<div class = "register">
-						
-					<input type="submit" value="Zaloguj się">
-
+				<div class="input-group p-3 m-auto">
+					<span class="input-group-text w-25">Hasło</span>
+					<input type="password" class="form-control" placeholder="Podaj hasło" aria-label="Password" aria-describedby="password" required>
 				</div>
-
+				
+				<div class="col-8 m-auto">
+					<div class="ms-5 p-3 fs-6">
+						<a href="" class="link"> Przypomnienie hasła </a>
+						<br />
+						Nie masz konta? <a href="registration.html" class="link">Zarejestruj się</a>
+					</div>
+				</div>
+				
+				<div class="btn-group btn-group-lg mt-5 start-50 translate-middle" role="group">
+					<button type="button" class="btn btn-success">Zaloguj się</button>
+				</div>
+				
 			</form>	
 		
 		
