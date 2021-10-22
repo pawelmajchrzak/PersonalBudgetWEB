@@ -61,6 +61,9 @@
 		
 		<main>
 		
+
+		
+		
 			<div class="container">
 				
 				<div class="row px-2">
@@ -83,9 +86,19 @@
 											<option value="2">				Ubiegły miesiąc	</option>
 											<option value="3" >				Ten rok			</option>
 											<option value="4">				Ubiegły rok		</option>
-											<option value="5">				Własny zakres...</option>
+											<option value="5" >            	Własny zakres...</option>
 										</select>
 									</div>
+									<div class="col-9 mt-4 mb-1 m-auto ps-5">
+										<button
+										  class="btn btn-outline-success btn-lg"
+										  data-bs-toggle="modal"
+										  data-bs-target="#timeRange"
+										>
+										  Wybierz zakres
+										</button>
+									</div>
+									
 								</div>
 							</section>
 						</div>
@@ -202,11 +215,68 @@
 					
 			</div>
 
-			
-			
+		
 		</main>
 
 	</div>
+	
+	
+	
+	
+	
+	<div
+      class="modal fade"
+      id="timeRange"
+      tabindex="-1"
+      aria-labelledby="timeRangeLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="enrollLabel">Wybierz zakres</h5>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="modal-body">
+            <form>
+				<div class="row m-0 m-lg-3">
+					<div class="col-12 col-lg-6">
+						<div class="input-group mb-3">
+							<span class="input-group-text w-25">Od</span>
+							<input type="date" class="form-control" aria-label="Date" aria-describedby="date" name="date" min="1900-01-01" value="" max="2030-12-31" required>
+						</div>
+					</div>
+					
+					<div class="col-12 col-lg-6">
+						<div class="input-group mb-3">
+							<span class="input-group-text w-25">Do</span>
+							<input type="date" class="form-control" aria-label="Date" aria-describedby="date" name="date" min="1900-01-01" value="" max="2030-12-31" required>
+						</div>
+					</div>
+				</div>
+            </form>
+          </div>
+          <div class="modal-footer">
+            <button
+              type="button"
+              class="btn btn-secondary"
+              data-bs-dismiss="modal"
+            >
+              Zamknij
+            </button>
+            <button type="button" class="btn btn-success">Wybierz</button>
+          </div>
+        </div>
+      </div>
+    </div>
+	
+	
+	
 	
 	<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
 	<script src="js/bootstrap.min.js"></script>
