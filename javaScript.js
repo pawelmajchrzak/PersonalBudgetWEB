@@ -1,7 +1,9 @@
-var date = "2021-12-31";
+var today = new Date();
+
+var month = today.getMonth()+1;
+
+var year = today.getFullYear();
+	
+document.getElementById("currentMonth").innerHTML = "  "+month+"."+year;
 
 
-//document.getElementById('time').value = date;
-
-d = document.getElementById("time");
-d.setAttribute("value", "2021-12-31");
