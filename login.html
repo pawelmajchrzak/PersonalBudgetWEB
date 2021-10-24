@@ -2,15 +2,15 @@
 <html lang="pl">
 <head>
 	<meta charset="utf-8" />
-	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
 	
 	<title>Budżet osobisty</title>
 	
-	<meta name="description" content="Budżet osobisty to aplikacja internetowa, która pozwoli Tobie oraz Twojej rodzinie lepiej zarządzać finansami. Dzięki niej, zobaczysz trendy swoich przychodów i wydatków oraz analizę bilansu - co w pewnością pozwoli Ci podjąć pewne przemyślane kroki w celu polepszenia swojej sytuacji materialnej!" />
+	<meta name="description" content="Budżet osobisty to aplikacja internetowa, która pozwoli Tobie oraz Twojej rodzinie lepiej zarządzać finansami. Dzięki niej, zobaczysz trendy swoich przychodów i wydatków oraz analizę bilansu - co z pewnością pozwoli Ci podjąć pewne przemyślane kroki w celu polepszenia swojej sytuacji materialnej!" />
 	<meta name="keywords" content="budżet, osobisty, personal, budget, przychody, wydatki, bilans, finanse, rodzinny, aplikacja, internetowa, oszczędności, portfel" />
 	
 	
-	
+	<link rel="stylesheet" href="css/bootstrap.min.css">
 	<link rel="stylesheet" href="style.css" type="text/css" />
 	<link rel="preconnect" href="https://fonts.gstatic.com">
 	<link href="https://fonts.googleapis.com/css2?family=Caveat&family=Lato:wght@300;400;700&family=Poppins:wght@200;400&display=swap" rel="stylesheet">
@@ -20,57 +20,53 @@
 
 <body>
 
-	<a href="registration.html"><div class="button">Rejestracja</div></a>
-	<div style="clear: both;"></div>
+	<a href="registration.html" class="btn btn-lg btn-outline-secondary position-absolute end-0 me-3">Rejestracja</a>
 	
-	<header>
+	<header class="col-12 col-md-8 col-lg-7 col-xl-6 col-xxl-5 px-3 m-auto mt-3 pt-4">
 		<h1 class="logo"><i class="icon-money"></i>  Budżet osobisty</h1>
 	</header>
 	
 	<article>
 	
-		<div id="container">
+		<div class="col-md-8 col-lg-7 col-xl-6 col-xxl-5 bg-white m-2 m-md-auto border border-light rounded p-2 shadow-lg">
 		
-			<header>
-				<h2>Logowanie</h2>
+			<header class="h3 text-start m-3" style="letter-spacing: 2px;">
+				Logowanie
 			</header>
 			
 			<form>
 
-				<label>
-					<div class="textfield"> E-mail </div> 
-					<div class="textfield"> <input type="email" name="email" placeholder="Podaj adres e-mail" required></div>
-					<div style="clear: both;"></div>
-				</label>
-				
-				<label>
-				<div class="textfield"> Hasło </div> 
-				<div class="textfield"> <input type="password" name="password" placeholder="Podaj hasło" required></div>
-				<div style="clear: both;"></div>
-				</label>
-				
-				<div id="regulations">
-					<br />
-					<a href="" class="link"> Przypomnienie hasła </a>
-					<br />
-					Nie masz konta? <a href="registration.html" class="link">Zarejestruj się</a>
+				<div class="input-group p-3 m-auto">
+					<span class="input-group-text w-25">E-mail</span>
+					<input type="email" class="form-control" placeholder="Podaj adres E-mail" aria-label="Email" required>
 				</div>
 
-				<div class = "register">
-						
-					<input type="submit" value="Zaloguj się">
-
+				<div class="input-group p-3 m-auto">
+					<span class="input-group-text w-25">Hasło</span>
+					<input type="password" class="form-control" placeholder="Podaj hasło" aria-label="Password" required>
 				</div>
+				
+				<div class="col-8 m-auto">
+					<div class="ms-3 p-2 fs-6">
+						<a href="" class="link"> Przypomnienie hasła </a>
+						<br />
+						Nie masz konta? <a href="registration.html" class="link">Zarejestruj się</a>
+					</div>
+				</div>
+				
+				<div class="btn-group btn-group-lg mt-5 start-50 translate-middle">
+					<button type="submit" class="btn btn-success">Zaloguj się</button>
+				</div>
+				
 
 			</form>	
 		
-		
 		</div>
-	
 	
 	</article>
 	
-	
+	<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
+	<script src="js/bootstrap.min.js"></script>
 	
 </body>
 </html>
