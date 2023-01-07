@@ -20,7 +20,7 @@
 
 <body>
 
-	<a href="registration.html" class="btn btn-lg btn-outline-secondary position-absolute end-0 me-3">Rejestracja</a>
+	<a href="registration.php" class="btn btn-lg btn-outline-secondary position-absolute end-0 me-3">Rejestracja</a>
 	
 	<header class="col-12 col-md-8 col-lg-7 col-xl-6 col-xxl-5 px-3 m-auto mt-3 pt-4">
 		<h1 class="logo"><i class="icon-money"></i>  Budżet osobisty</h1>
@@ -50,7 +50,7 @@
 					<div class="ms-3 p-2 fs-6">
 						<a href="" class="link"> Przypomnienie hasła </a>
 						<br />
-						Nie masz konta? <a href="registration.html" class="link">Zarejestruj się</a>
+						Nie masz konta? <a href="registration.php" class="link">Zarejestruj się</a>
 					</div>
 				</div>
 				

@@ -20,7 +20,7 @@
 
 <body>
 
-	<a href="login.html" class="btn btn-lg btn-outline-secondary position-absolute end-0 me-3">Logowanie</a>
+	<a href="login.php" class="btn btn-lg btn-outline-secondary position-absolute end-0 me-3">Logowanie</a>
 	
 	<header class="col-12 col-md-8 col-lg-7 col-xl-6 col-xxl-5 px-3 m-auto mt-3 pt-4">
 		<h1 class="logo"><i class="icon-money"></i>  Budżet osobisty</h1>
@@ -55,7 +55,7 @@
 					<div class="ms-3 p-3 fs-6">
 						<input type="checkbox" class="form-check-input" value="a" name="wyp[]" required> Akceptuję <a href="" target="_blank" class="link">Regulamin</a> i <a href="" target="_blank" class="link">Politykę prywatności</a>
 						<br />
-						Masz już konto? <a href="login.html" class="link">Zaloguj się</a>
+						Masz już konto? <a href="login.php" class="link">Zaloguj się</a>
 					</div>
 				</div>
 				

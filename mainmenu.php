@@ -20,10 +20,10 @@
 
 <body>
 
-	<a href="login.html" class="btn btn-lg btn-outline-secondary position-absolute end-0 me-3">Wyloguj się</a>
+	<a href="login.php" class="btn btn-lg btn-outline-secondary position-absolute end-0 me-3">Wyloguj się</a>
 	
 	<header class="col-12 col-lg-11 col-xl-10 col-xxl-8 px-3 m-auto mt-3 pt-4">
-		<h1 class="logo"><a href="mainmenu.html" class="cleanLink"><i class="icon-money"></i>  Budżet osobisty</a></h1>
+		<h1 class="logo"><a href="mainmenu.php" class="cleanLink"><i class="icon-money"></i>  Budżet osobisty</a></h1>
 	</header>
 	
 	<div class="col-lg-11 col-xl-10 col-xxl-8 bg-white m-2 m-lg-auto border border-light rounded p-2 shadow-lg">	
@@ -44,9 +44,9 @@
 			<div class="collapse navbar-collapse" id="menu">
 			
 				<ol class="navbar-nav m-lg-auto col-12">
-					<li class="nav-item col-lg-3"><a class="nav-link" href="addIncome.html"><i class="icon-money-1"></i>Dodaj przychód</a></li>
-					<li class="nav-item col-lg-3"><a class="nav-link" href="addExpense.html"><i class="icon-basket"></i>Dodaj wydatek</a></li>
-					<li class="nav-item col-lg-3"><a class="nav-link" href="viewBalanceSheet.html"><i class="icon-chart-pie"></i>Przeglądaj bilans</a></li>
+					<li class="nav-item col-lg-3"><a class="nav-link" href="addIncome.php"><i class="icon-money-1"></i>Dodaj przychód</a></li>
+					<li class="nav-item col-lg-3"><a class="nav-link" href="addExpense.php"><i class="icon-basket"></i>Dodaj wydatek</a></li>
+					<li class="nav-item col-lg-3"><a class="nav-link" href="viewBalanceSheet.php"><i class="icon-chart-pie"></i>Przeglądaj bilans</a></li>
 					<li class="nav-item dropdown col-lg-3"><a class="nav-link" href="" data-toggle="dropdown" role="button" aria-expanded="false" id="submenu" aria-haspopup="true"><i class="icon-cog-alt"></i>Ustawienia <i class="icon-down-open"></i></a>
 						<ul class="dropdown-menu" aria-labelledby="submenu">
 							<li><a class="dropdown-item" href="#">Edytuj konto</a></li>
