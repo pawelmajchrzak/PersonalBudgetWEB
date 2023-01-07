@@ -1,3 +1,15 @@
+<?php
+
+	session_start();
+	
+	if (!isset($_SESSION['logged']))
+	{
+		header('Location: login.php');
+		exit();
+	}
+	
+?>
+
 <!DOCTYPE HTML>
 <html lang="pl">
 <head>
@@ -20,8 +32,8 @@
 </head>
 
 <body>
-	
-	<a href="login.php" class="btn btn-lg btn-outline-secondary position-absolute end-0 me-3">Wyloguj się</a>
+	<span class="text-success position-absolute top-0 end-0 me-3 fs-6 mt-1">Użytkownik: <?php echo $_SESSION['username'];?></span>
+	<a href="login.php" class="btn btn-lg btn-outline-secondary position-absolute end-0 me-3 mt-3">Wyloguj się</a>
 	
 	<header class="col-12 col-lg-11 col-xl-10 col-xxl-8 px-3 m-auto mt-3 pt-4">
 		<h1 class="logo"><a href="mainmenu.php" class="cleanLink"><i class="icon-money"></i>  Budżet osobisty</a></h1>
