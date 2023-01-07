@@ -34,16 +34,16 @@
 				Logowanie
 			</header>
 			
-			<form>
+			<form action="loginNow.php" method="post">
 
 				<div class="input-group p-3 m-auto">
 					<span class="input-group-text w-25">E-mail</span>
-					<input type="email" class="form-control" placeholder="Podaj adres E-mail" aria-label="Email" required>
+					<input type="email" class="form-control" placeholder="Podaj adres E-mail" aria-label="Email" name="email" required>
 				</div>
 
 				<div class="input-group p-3 m-auto">
 					<span class="input-group-text w-25">Hasło</span>
-					<input type="password" class="form-control" placeholder="Podaj hasło" aria-label="Password" required>
+					<input type="password" class="form-control" placeholder="Podaj hasło" aria-label="Password" name="password" required>
 				</div>
 				
 				<div class="col-8 m-auto">
