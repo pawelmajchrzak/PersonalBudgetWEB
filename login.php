@@ -1,3 +1,15 @@
+<?php
+
+	session_start();
+	
+	if ((isset($_SESSION['logged'])) && ($_SESSION['logged']==true))
+	{
+		header('Location: mainmenu.php');
+		exit();
+	}
+
+?>
+
 <!DOCTYPE HTML>
 <html lang="pl">
 <head>
@@ -45,6 +57,11 @@
 					<span class="input-group-text w-25">Hasło</span>
 					<input type="password" class="form-control" placeholder="Podaj hasło" aria-label="Password" name="password" required>
 				</div>
+				<span class="fs-6 ms-4 text-danger">
+				<?php
+					if(isset($_SESSION['error']))	echo $_SESSION['error'];
+				?>
+				</span>
 				
 				<div class="col-8 m-auto">
 					<div class="ms-3 p-2 fs-6">
