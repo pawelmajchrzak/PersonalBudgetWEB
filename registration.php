@@ -4,8 +4,34 @@
 
 	if (isset($_POST['email']))
 	{
+		//Udana walidacja? Załóżmy, że tak!
+		$validationCorrect=true;
 
-		
+		//Sprawdź poprawność imienia
+		$username = $_POST['username'];
+
+		//Sprawdzenie długości imienia
+		if ((strlen($username)<2) || (strlen($username)>20))
+		{
+			$validationCorrect=false;
+			$_SESSION['e_username']="Imię musi posiadać od 2 do 20 znaków!";
+		}
+
+		$checkName = '/(*UTF8)^[A-ZŁŚ]{1}+[a-ząęółśżźćń]+$/';
+
+		if(preg_match($checkName, $username)==false)
+		{
+			$validationCorrect=false;
+			$_SESSION['e_username']="Imię może zawierać tylko litery! Zacznij od wielkiej litery!";
+		}
+
+		if($validationCorrect==true)
+		{
+			//Hurra, wszystkie testy zaliczone!
+			echo "Udana walidacja"; exit();
+		}
+
+
 	}
 
 ?>
@@ -51,17 +77,26 @@
 			
 			<form method="post">
 
-				<div class="input-group p-3 m-auto">
+				<div class="input-group pt-3 pb-4 m-auto">
 					<span class="input-group-text w-25">Imię</span>
+					<?php
+						if (isset($_SESSION['e_username']))
+						{
+							echo '<div class="text-danger w-100 ms-2 fs-6 position-absolute start-50 translate-middle-x"><br /><br />'.$_SESSION['e_username'].'</div>';
+							unset($_SESSION['e_username']);
+						}
+					?>
 					<input type="text" class="form-control" placeholder="Podaj imię" aria-label="Name" name="username" required>
+
 				</div>
 
-				<div class="input-group p-3 m-auto">
+
+				<div class="input-group pt-3 pb-4 m-auto">
 					<span class="input-group-text w-25">E-mail</span>
 					<input type="email" class="form-control" placeholder="Podaj adres Email" aria-label="Email" name="email" required>
 				</div>
 
-				<div class="input-group p-3 m-auto">
+				<div class="input-group pt-3 pb-4 m-auto">
 					<span class="input-group-text w-25">Hasło</span>
 					<input type="password" class="form-control" placeholder="Podaj hasło" aria-label="Password" name="password" required>
 				</div>
