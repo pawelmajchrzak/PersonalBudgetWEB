@@ -25,6 +25,30 @@
 			$_SESSION['e_username']="Imię może zawierać tylko litery! Zacznij od wielkiej litery!";
 		}
 
+		// Sprawdź poprawność adresu email
+		$email = $_POST['email'];
+		$emailB = filter_var($email, FILTER_SANITIZE_EMAIL);
+		
+		if ((filter_var($emailB, FILTER_VALIDATE_EMAIL)==false) || ($emailB!=$email))
+		{
+			$validationCorrect=false;
+			$_SESSION['e_email']="Podaj poprawny adres e-mail!";
+		}
+
+		//Sprawdź poprawność hasła
+		$password = $_POST['password'];
+
+		if ((strlen($password)<8) || (strlen($password)>20))
+		{
+			$validationCorrect=false;
+			$_SESSION['e_password']="Hasło musi posiadać od 8 do 20 znaków!";
+		}
+
+		$password_hash = password_hash($password, PASSWORD_DEFAULT);
+
+
+
+
 		if($validationCorrect==true)
 		{
 			//Hurra, wszystkie testy zaliczone!
@@ -93,11 +117,25 @@
 
 				<div class="input-group pt-3 pb-4 m-auto">
 					<span class="input-group-text w-25">E-mail</span>
+					<?php
+						if (isset($_SESSION['e_email']))
+						{
+							echo '<div class="text-danger w-100 ms-2 fs-6 position-absolute start-50 translate-middle-x"><br /><br />'.$_SESSION['e_email'].'</div>';
+							unset($_SESSION['e_email']);
+						}
+					?>
 					<input type="email" class="form-control" placeholder="Podaj adres Email" aria-label="Email" name="email" required>
 				</div>
 
 				<div class="input-group pt-3 pb-4 m-auto">
 					<span class="input-group-text w-25">Hasło</span>
+					<?php
+						if (isset($_SESSION['e_password']))
+						{
+							echo '<div class="text-danger w-100 ms-2 fs-6 position-absolute start-50 translate-middle-x"><br /><br />'.$_SESSION['e_password'].'</div>';
+							unset($_SESSION['e_password']);
+						}
+					?>
 					<input type="password" class="form-control" placeholder="Podaj hasło" aria-label="Password" name="password" required>
 				</div>
 				
