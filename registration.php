@@ -45,7 +45,33 @@
 		}
 
 		$password_hash = password_hash($password, PASSWORD_DEFAULT);
+		
+		//Czy zaakceptowano regulamin?
+		if (!isset($_POST['statute']))
+		{
+			$validationCorrect=false;
+			$_SESSION['e_statute']="Potwierdź akceptację regulaminu!";
+		}	
 
+		//Bot or not? Oto jest pytanie!
+		$secretKey = "6LeQ1OQjAAAAAAS2VjtWBMwrNIM_uL9U5YHAwgml";
+		
+		$checkCaptcha = file_get_contents('https://www.google.com/recaptcha/api/siteverify?secret='.$secretKey.'&response='.$_POST['g-recaptcha-response']);
+		
+		$answerCaptcha = json_decode($checkCaptcha);
+		
+		if ($answerCaptcha->success==false)
+		{
+			$validationCorrect=false;
+			$_SESSION['e_bot']="Potwierdź, że nie jesteś botem!";
+		}	
+
+		//Zapamiętaj wprowadzone dane
+		$_SESSION['fr_username'] = $username;
+		$_SESSION['fr_email'] = $email;
+		$_SESSION['fr_password'] = $password;
+		if (isset($_POST['statute'])) $_SESSION['fr_statute'] = true;
+		
 
 
 
@@ -110,7 +136,13 @@
 							unset($_SESSION['e_username']);
 						}
 					?>
-					<input type="text" class="form-control" placeholder="Podaj imię" aria-label="Name" name="username" required>
+					<input type="text" value="<?php
+						if (isset($_SESSION['fr_username']))
+						{
+							echo $_SESSION['fr_username'];
+							unset($_SESSION['fr_username']);
+						}
+					?>" class="form-control" placeholder="Podaj imię" aria-label="Name" name="username" required>
 
 				</div>
 
@@ -124,7 +156,13 @@
 							unset($_SESSION['e_email']);
 						}
 					?>
-					<input type="email" class="form-control" placeholder="Podaj adres Email" aria-label="Email" name="email" required>
+					<input type="email" value="<?php
+						if (isset($_SESSION['fr_email']))
+						{
+							echo $_SESSION['fr_email'];
+							unset($_SESSION['fr_email']);
+						}
+					?>" class="form-control" placeholder="Podaj adres Email" aria-label="Email" name="email" required>
 				</div>
 
 				<div class="input-group pt-3 pb-4 m-auto">
@@ -136,23 +174,49 @@
 							unset($_SESSION['e_password']);
 						}
 					?>
-					<input type="password" class="form-control" placeholder="Podaj hasło" aria-label="Password" name="password" required>
+					<input type="password" value="<?php
+						if (isset($_SESSION['fr_password']))
+						{
+							echo $_SESSION['fr_password'];
+							unset($_SESSION['fr_password']);
+						}
+					?>" class="form-control" placeholder="Podaj hasło" aria-label="Password" name="password" required>
 				</div>
 				
 				<div class="col-12 col-md-11 col-lg-9 m-auto">
 					<div class="ms-3 p-3 fs-6">
 						<label>
-							<input type="checkbox" class="form-check-input" value="a" name="statute" required> Akceptuję <a href="" target="_blank" class="link">Regulamin</a> i <a href="" target="_blank" class="link">Politykę prywatności</a>
+							<input type="checkbox" class="form-check-input" value="a" name="statute" <?php
+								if (isset($_SESSION['fr_statute']))
+								{
+									echo "checked";
+									unset($_SESSION['fr_statute']);
+								}
+							?>/> Akceptuję <a href="" target="_blank" class="link">Regulamin</a> i <a href="" target="_blank" class="link">Politykę prywatności</a>
 						</label>
 						<br />
 						Masz już konto? <a href="login.php" class="link">Zaloguj się</a>
+						<?php
+							if (isset($_SESSION['e_statute']))
+							{
+								echo '<span class="text-danger w-100 ms-2 fs-6 ">'.$_SESSION['e_statute'].'</span>';
+								unset($_SESSION['e_statute']);
+							}
+						?>
 					</div>
 					
 					<div class="position-absolute start-50 translate-middle-x">
+						<?php
+							if (isset($_SESSION['e_bot']))
+							{
+								echo '<div class="text-danger w-100 ms-2 mt-2 fs-6 position-absolute start-50 translate-middle-x" style="z-index:-1;"><br /><br /><br />'.$_SESSION['e_bot'].'</div>';
+								unset($_SESSION['e_bot']);
+							}
+						?>
 						<div class="g-recaptcha" data-sitekey="6LeQ1OQjAAAAADZ_Iswn1RcAXpgAWXbxjNq0Go0n"></div>
 						
 					</div>
-					<br /><br />
+					<br /><br /><br />
 				</div>
 
 				

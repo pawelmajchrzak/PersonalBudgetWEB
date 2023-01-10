@@ -59,7 +59,11 @@
 				</div>
 				<span class="fs-6 ms-4 text-danger">
 				<?php
-					if(isset($_SESSION['error']))	echo $_SESSION['error'];
+					if(isset($_SESSION['error']))
+					{
+						echo $_SESSION['error'];
+						unset($_SESSION['error']);
+					}
 				?>
 				</span>
 				
