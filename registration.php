@@ -72,13 +72,57 @@
 		$_SESSION['fr_password'] = $password;
 		if (isset($_POST['statute'])) $_SESSION['fr_statute'] = true;
 		
+		require_once "connect.php";
+		mysqli_report(MYSQLI_REPORT_STRICT);
 
-
-
-		if($validationCorrect==true)
+		try
 		{
-			//Hurra, wszystkie testy zaliczone!
-			echo "Udana walidacja"; exit();
+			$connection = new mysqli($host, $db_user, $db_password, $db_name);
+			if ($connection->connect_errno!=0)
+			{
+				throw new Exception(mysqli_connect_errno());
+			}
+			else
+			{
+				//Czy email już istnieje?
+				$result = $connection->query("SELECT id FROM users WHERE email='$email'");
+				
+				if (!$result) throw new Exception($connection->error);
+				
+				$howManyEmails = $result->num_rows;
+				if($howManyEmails>0)
+				{
+					$validationCorrect=false;
+					$_SESSION['e_email']="Istnieje już konto przypisane do tego adresu e-mail!";
+				}		
+	
+				if ($validationCorrect==true)
+				{
+					//Hurra, wszystkie testy zaliczone, dodajemy gracza do bazy
+					//echo "Udana walidacja"; exit();
+					
+					if ($connection->query("INSERT INTO users VALUES (NULL, '$username', '$password_hash', '$email')"))
+					{
+						$_SESSION['successfulRegistration']=true;
+						header('Location: welcome.php');
+					}
+					else
+					{
+						throw new Exception($connection->error);
+					}
+					
+					
+				}
+				
+				$connection->close();
+			}
+
+
+		}
+		catch(Exception $e)
+		{
+			echo '<span style="color:red;">Błąd serwera! Przepraszamy za niedogodności i prosimy o rejestrację w innym terminie!</span><br />';
+			//echo '<br />Informacja developerska: '.$e;
 		}
 
 
