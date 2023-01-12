@@ -8,6 +8,8 @@
 		exit();
 	}
 
+
+
     require_once "connect.php";
     $connection = @new mysqli($host, $db_user, $db_password, $db_name);
 
@@ -21,6 +23,9 @@
         $password = $_POST['password'];
 
         $email = htmlentities($email, ENT_QUOTES, "UTF-8");
+
+        //Zapamiętaj wprowadzone dane
+	    $_SESSION['fr_email'] = $email;
   
         if ($result = @$connection->query(
         sprintf("SELECT * FROM users WHERE email='%s'",

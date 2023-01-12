@@ -50,7 +50,13 @@
 
 				<div class="input-group p-3 m-auto">
 					<span class="input-group-text w-25">E-mail</span>
-					<input type="email" class="form-control" placeholder="Podaj adres E-mail" aria-label="Email" name="email" required>
+					<input type="email" value="<?php
+						if (isset($_SESSION['fr_email']))
+						{
+							echo $_SESSION['fr_email'];
+							unset($_SESSION['fr_email']);
+						}
+					?>" class="form-control" placeholder="Podaj adres E-mail" aria-label="Email" name="email" required>
 				</div>
 
 				<div class="input-group p-3 m-auto">
