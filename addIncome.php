@@ -8,6 +8,33 @@ if (!isset($_SESSION['logged']))
 	exit();
 }
 
+if (isset($_POST['amount']))
+	{
+		//Udana walidacja? Załóżmy, że tak!
+		$validationCorrect=true;
+
+		//Sprawdź poprawność kwoty
+		$amount = $_POST['amount'];
+		$amount = str_replace(',','.',$amount);
+		if(is_numeric($amount)==false)
+		{
+			$validationCorrect=false;
+			$_SESSION['e_amount']="Wpisz poprawny format liczby!";
+		}
+		else
+		{
+			$amount = number_format($amount, 2, ',', ' ');
+		}
+		
+
+		if ($validationCorrect==true)
+		{
+			//Hurra, wszystkie testy zaliczone, dodajemy gracza do bazy
+			echo "Udana walidacja";
+			echo "<br /> $amount";
+			exit();
+		}
+	}
 ?>
 
 <!DOCTYPE HTML>
@@ -85,13 +112,20 @@ if (!isset($_SESSION['logged']))
 							Dodaj przychód
 						</header>
 						
-						<form>
+						<form method="post">
 						
 							<div class="row m-0 m-lg-3">
 								<div class="col-12 col-lg-6">
 									<div class="input-group mb-3">
+										<?php
+											if (isset($_SESSION['e_amount']))
+											{
+												echo '<div class="text-danger w-100 ms-2 fs-6 position-absolute start-50 translate-middle-x"><br /><br />'.$_SESSION['e_amount'].'</div>';
+												unset($_SESSION['e_amount']);
+											}
+										?>
 										<span class="input-group-text w-50">Kwota</span>
-										<input type="number" class="form-control" placeholder="Podaj kwotę w zł" aria-label="Amount" aria-describedby="amount" required>
+										<input type="text" step="0.001" class="form-control" placeholder="Podaj kwotę w zł" aria-label="Amount" aria-describedby="amount" name="amount" required>
 									</div>
 								</div>
 								
@@ -136,7 +170,7 @@ if (!isset($_SESSION['logged']))
 							
 							<div class="btn-group btn-group-lg start-50 translate-middle mt-4" role="group">
 								<button type="button" class="btn btn-outline-success me-2">Anuluj</button>
-								<button type="button" class="btn btn-success ms-2">Dodaj</button>
+								<button type="submit" class="btn btn-success ms-2">Dodaj</button>
 							</div>
 
 						</form>
