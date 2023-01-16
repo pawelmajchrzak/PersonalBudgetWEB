@@ -25,13 +25,27 @@ if (isset($_POST['amount']))
 		{
 			$amount = number_format($amount, 2, ',', ' ');
 		}
-		
+
+		//Sprawdź poprawność daty
+		$date = $_POST['date'];
+		$dateObject= new DateTime($date);
+		$day= $dateObject->format("d");
+		$month= $dateObject->format("m");
+		$year= $dateObject->format("Y");
+
+		if(checkdate($month, $day, $year)==false)
+		{
+			$validationCorrect=false;
+			$_SESSION['e_date']="Wpisz poprawny format daty!";
+		}
 
 		if ($validationCorrect==true)
 		{
 			//Hurra, wszystkie testy zaliczone, dodajemy gracza do bazy
 			echo "Udana walidacja";
-			echo "<br /> $amount";
+			echo "<br>";
+			echo $date;
+
 			exit();
 		}
 	}
@@ -125,12 +139,19 @@ if (isset($_POST['amount']))
 											}
 										?>
 										<span class="input-group-text w-50">Kwota</span>
-										<input type="text" step="0.001" class="form-control" placeholder="Podaj kwotę w zł" aria-label="Amount" aria-describedby="amount" name="amount" required>
+										<input type="number" step="0.01" class="form-control" placeholder="Podaj kwotę w zł" aria-label="Amount" aria-describedby="amount" name="amount" required>
 									</div>
 								</div>
 								
 								<div class="col-12 col-lg-6">
 									<div class="input-group mb-3">
+									<?php
+											if (isset($_SESSION['e_date']))
+											{
+												echo '<div class="text-danger w-100 ms-2 fs-6 position-absolute start-50 translate-middle-x"><br /><br />'.$_SESSION['e_date'].'</div>';
+												unset($_SESSION['e_date']);
+											}
+										?>
 										<span class="input-group-text w-50">Data</span>
 										<input type="date" class="form-control" aria-label="Date" aria-describedby="date" name="date" min="1900-01-01" value="" max="2030-12-31" required>
 									</div>
