@@ -45,6 +45,25 @@
                     $_SESSION['username'] = $record['username'];
                     $_SESSION['email'] = $record['email'];
 
+                    if ($resultIncomes = @$connection->query(
+                    sprintf("SELECT * FROM incomes_category_assigned_to_users WHERE user_id='%s'",
+                    mysqli_real_escape_string($connection,$_SESSION['id']))))
+                    {
+                        $i=0;
+                        while ($recordIncomes = $resultIncomes->fetch_assoc())
+                        {
+                            
+                            $_SESSION['category_id'][$i] = $recordIncomes['id'];
+                            $_SESSION['category_name'][$i] = $recordIncomes['name'];
+                            $_SESSION['category_user_id'][$i] = $recordIncomes['user_id'];
+                            $i++;
+                        }
+                        $_SESSION['iteratorIncomes'] = $i;
+;
+                    }
+
+
+
                     unset($_SESSION['error']);
                     $result->free_result();
                     header('Location: mainmenu.php');

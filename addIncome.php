@@ -68,16 +68,51 @@ if (isset($_POST['amount']))
 			$validationCorrect=false;
 			$_SESSION['e_comment']="Komentarz może składać się tylko z liter i cyfr";
 		}
-
-		if ($validationCorrect==true)
+	
+		$_SESSION['fr_amount'] = $amount;
+		
+		require_once "connect.php";
+		mysqli_report(MYSQLI_REPORT_STRICT);
+		
+		try
 		{
-			//Hurra, wszystkie testy zaliczone, dodajemy gracza do bazy
-			echo "Udana walidacja";
-			echo "<br>";
-			echo $date;
+			$connection = new mysqli($host, $db_user, $db_password, $db_name);
+			if ($connection->connect_errno!=0)
+			{
+				throw new Exception(mysqli_connect_errno());
+			}
+			else
+			{
+	
+				if ($validationCorrect==true)
+				{
+					//Hurra, wszystkie testy zaliczone, dodajemy przychód do bazy
+					//echo "Udana walidacja"; exit();
+					
+					if ($connection->query("INSERT INTO users VALUES (NULL, '$username', '$password_hash', '$email')"))
+					{
+						$_SESSION['successfulRegistration']=true;
+						header('Location: welcome.php');
+					}
+					else
+					{
+						throw new Exception($connection->error);
+					}
+					
+					
+				}
+				
+				$connection->close();
+			}
 
-			exit();
+
 		}
+		catch(Exception $e)
+		{
+			echo '<span style="color:red;">Błąd serwera! Przepraszamy za niedogodności i prosimy o rejestrację w innym terminie!</span><br />';
+			//echo '<br />Informacja developerska: '.$e;
+		}
+
 	}
 ?>
 
@@ -169,7 +204,13 @@ if (isset($_POST['amount']))
 											}
 										?>
 										<span class="input-group-text w-50">Kwota</span>
-										<input type="number" step="0.01" class="form-control" placeholder="Podaj kwotę w zł" aria-label="Amount" aria-describedby="amount" name="amount" required>
+										<input type="number" value="<?php
+											if (isset($_SESSION['fr_amount']))
+											{
+												echo $_SESSION['fr_amount'];
+												unset($_SESSION['fr_amount']);
+											}
+										?> step="0.01" class="form-control" placeholder="Podaj kwotę w zł" aria-label="Amount" aria-describedby="amount" name="amount" required>
 									</div>
 								</div>
 								
@@ -207,10 +248,19 @@ if (isset($_POST['amount']))
 										<select class="form-select" name="category" aria-label="category">
 
 											<option value="cat0" selected disabled>	</option>
-											<option value="cat1">	Wynagrodzenie			</option>
-											<option value="cat2">	Odsetki bankowe			</option>
-											<option value="cat3">	Sprzedaż online			</option>
-											<option value="cat4">	Inne					</option>
+											<?php
+											for ($i=1; $i<$_SESSION['iteratorIncomes'];$i++)
+											{
+												echo '<option value="cat'.$i.'">'.$_SESSION['category_name'][$i-1].'</option>';
+											}
+
+
+
+											?>
+
+
+
+
 										</select>								
 									</div>
 								</div>
