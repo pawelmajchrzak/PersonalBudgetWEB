@@ -53,9 +53,9 @@
                         while ($recordIncomes = $resultIncomes->fetch_assoc())
                         {
                             
-                            $_SESSION['category_id'][$i] = $recordIncomes['id'];
-                            $_SESSION['category_name'][$i] = $recordIncomes['name'];
-                            $_SESSION['category_user_id'][$i] = $recordIncomes['user_id'];
+                            $_SESSION['categoryIncome_id'][$i] = $recordIncomes['id'];
+                            $_SESSION['categoryIncome_name'][$i] = $recordIncomes['name'];
+                            $_SESSION['categoryIncome_user_id'][$i] = $recordIncomes['user_id'];
                             $i++;
                         }
                         $_SESSION['iteratorIncomes'] = $i;

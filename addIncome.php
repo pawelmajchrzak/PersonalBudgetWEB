@@ -251,7 +251,7 @@ if (isset($_POST['amount']))
 											<?php
 											for ($i=1; $i<$_SESSION['iteratorIncomes'];$i++)
 											{
-												echo '<option value="cat'.$i.'">'.$_SESSION['category_name'][$i-1].'</option>';
+												echo '<option value="cat'.$i.'">'.$_SESSION['categoryIncome_name'][$i-1].'</option>';
 											}
 
 

@@ -103,6 +103,44 @@
 					
 					if ($connection->query("INSERT INTO users VALUES (NULL, '$username', '$password_hash', '$email')"))
 					{
+						//skopiowanie defaultowych kategorii przychodów i wydatków
+							//pobieranie id usera
+
+						$resultUsers = $connection->query("SELECT id FROM users WHERE email='$email'");
+						$user = $resultUsers->fetch_assoc();
+						$userId=$user['id'];
+
+							//pobieranie i kopiawanie typowych przychodow
+						$resultIncomes = $connection->query("SELECT * FROM incomes_category_default");
+						
+						while($defaultIncomes = $resultIncomes->fetch_assoc())
+						{
+							$singleTypeOfIncome = $defaultIncomes['name'];
+							$connection->query("INSERT INTO incomes_category_assigned_to_users VALUES (NULL, '$userId', '$singleTypeOfIncome')");
+						}
+						
+							//pobieranie i kopiawanie typowych wydatkow
+						$resultExpenses = $connection->query("SELECT * FROM expenses_category_default");
+						
+						while($defaultExpenses = $resultExpenses->fetch_assoc())
+						{
+							$singleTypeOfExpense = $defaultExpenses['name'];
+							$connection->query("INSERT INTO expenses_category_assigned_to_users VALUES (NULL, '$userId', '$singleTypeOfExpense')");
+						}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 						$_SESSION['successfulRegistration']=true;
 						header('Location: welcome.php');
 					}
