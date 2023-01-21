@@ -111,10 +111,13 @@
 										<select class="form-select" aria-label="payment">
 
 											<option value="none" selected disabled> </option>
-											<option value="M">	Gotówka					</option>
-											<option value="C" >	Karta płatnicza			</option>
-											<option value="T">	Przelew/BLIK				</option>
-											<option value="O">	Inne							</option>
+											<?php
+												for ($i=1; $i<=$_SESSION['iteratorMethodsPayment'];$i++)
+												{
+													echo '<option value="'.$_SESSION['methodPayment_id'][$i-1].'">'.$_SESSION['methodPayment_name'][$i-1].'</option>';
+												}
+											?>
+
 
 										</select>		
 									</div>
@@ -124,25 +127,14 @@
 									<div class="input-group mb-3">
 										<span class="input-group-text w-50">Kategoria</span>
 										<select class="form-select" aria-label="category">
-
 											<option value="cat0" selected disabled>	</option>
-											<option value="cat1">	Jedzenie				</option>
-											<option value="cat2">	Mieszkanie			</option>
-											<option value="cat3">	Transport				</option>
-											<option value="cat4">	Telekomunikacja	</option>
-											<option value="cat5">	Opieka zdrowotna	</option>
-											<option value="cat6">	Ubranie					</option>
-											<option value="cat7">	Higiena					</option>
-											<option value="cat8">	Dzieci					</option>
-											<option value="cat9">	Rozrywka				</option>
-											<option value="cat10">	Wycieczka				</option>
-											<option value="cat11">	Szkolenia				</option>
-											<option value="cat12">	Książki					</option>
-											<option value="cat13">	Oszczędności			</option>
-											<option value="cat14">	Emerytura				</option>
-											<option value="cat15">	Spłata długów		</option>
-											<option value="cat16">	Darowizna				</option>
-											<option value="cat17">	Inne wydatki			</option>
+											<?php
+												for ($i=1; $i<=$_SESSION['iteratorExpenses'];$i++)
+												{
+													echo '<option value="'.$_SESSION['categoryExpense_id'][$i-1].'">'.$_SESSION['categoryExpense_name'][$i-1].'</option>';
+												}
+											?>
+
 
 										</select>								
 									</div>

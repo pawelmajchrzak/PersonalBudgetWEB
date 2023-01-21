@@ -59,10 +59,39 @@
                             $i++;
                         }
                         $_SESSION['iteratorIncomes'] = $i;
-;
                     }
 
+                    if ($resultExpenses = @$connection->query(
+                        sprintf("SELECT * FROM expenses_category_assigned_to_users WHERE user_id='%s'",
+                        mysqli_real_escape_string($connection,$_SESSION['id']))))
+                    {
+                        $i=0;
+                        while ($recordExpenses = $resultExpenses->fetch_assoc())
+                        {
+                            
+                            $_SESSION['categoryExpense_id'][$i] = $recordExpenses['id'];
+                            $_SESSION['categoryExpense_name'][$i] = $recordExpenses['name'];
+                            $_SESSION['categoryExpense_user_id'][$i] = $recordExpenses['user_id'];
+                            $i++;
+                        }
+                        $_SESSION['iteratorExpenses'] = $i;
+                    }
 
+                    if ($resultMethodsPayment = @$connection->query(
+                        sprintf("SELECT * FROM payment_methods_assigned_to_users WHERE user_id='%s'",
+                        mysqli_real_escape_string($connection,$_SESSION['id']))))
+                    {
+                        $i=0;
+                        while ($recordMethodsPayment = $resultMethodsPayment->fetch_assoc())
+                        {
+                            
+                            $_SESSION['methodPayment_id'][$i] = $recordMethodsPayment['id'];
+                            $_SESSION['methodPayment_name'][$i] = $recordMethodsPayment['name'];
+                            $_SESSION['methodPayment_user_id'][$i] = $recordMethodsPayment['user_id'];
+                            $i++;
+                        }
+                        $_SESSION['iteratorMethodsPayment'] = $i;
+                    }
 
                     unset($_SESSION['error']);
                     $result->free_result();
