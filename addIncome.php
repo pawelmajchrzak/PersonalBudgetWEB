@@ -23,7 +23,7 @@ if (isset($_POST['amount']))
 		}
 		else
 		{
-			$amount = number_format($amount, 2, ',', ' ');
+			$amount = number_format($amount, 2, ',', '');
 		}
 
 		//Sprawdź poprawność daty
@@ -246,7 +246,7 @@ if (isset($_POST['amount']))
 								<?php
 											if (isset($_SESSION['e_category']))
 											{
-												echo '<div class="text-danger w-200 ms-2 fs-6 position-absolute start-75 translate-middle-x ms-5"><br /><br />'.$_SESSION['e_category'].'</div>';
+												echo '<div class="text-danger w-160 fs-6 position-absolute start-25"><br /><br />'.$_SESSION['e_category'].'</div>';
 												unset($_SESSION['e_category']);
 											}
 										?>
@@ -285,7 +285,7 @@ if (isset($_POST['amount']))
 							</div>
 							
 							<div class="btn-group btn-group-lg start-50 translate-middle mt-5" role="group">
-								<button type="button" class="btn btn-outline-success me-2">Anuluj</button>
+								<button type="button"  class="btn btn-outline-success me-2" onclick="location.href='mainmenu.php';">Anuluj</button>
 								<button type="submit" class="btn btn-success ms-2">Dodaj</button>
 							</div>
 

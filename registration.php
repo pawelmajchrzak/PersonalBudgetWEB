@@ -129,6 +129,17 @@
 						}
 
 
+							//pobieranie i kopiawanie typowych metod płatności
+						$resultMethodsPayment = $connection->query("SELECT * FROM payment_methods_default");
+					
+						while($defaultMethodPayment = $resultMethodsPayment->fetch_assoc())
+						{
+							$singleTypeOfMethodPayment = $defaultMethodPayment['name'];
+							$connection->query("INSERT INTO payment_methods_assigned_to_users VALUES (NULL, '$userId', '$singleTypeOfMethodPayment')");
+						}
+						
+
+
 
 
 

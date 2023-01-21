@@ -8,6 +8,137 @@
 		exit();
 	}
 	
+	if (isset($_POST['amount']))
+	{
+		//Udana walidacja? Załóżmy, że tak!
+		$validationCorrect=true;
+
+		//Sprawdź poprawność kwoty
+		$amount = $_POST['amount'];
+		$amount = str_replace(',','.',$amount);
+		if(is_numeric($amount)==false)
+		{
+			$validationCorrect=false;
+			$_SESSION['e_amount']="Wpisz poprawny format liczby!";
+		}
+		else
+		{
+			$amount = number_format($amount, 2, ',', '');
+		}
+
+		//Sprawdź poprawność daty
+		$date = $_POST['date'];
+		$dateObject= new DateTime($date);
+		$day= $dateObject->format("d");
+		$month= $dateObject->format("m");
+		$year= $dateObject->format("Y");
+
+		if(checkdate($month, $day, $year)==false)
+		{
+			$validationCorrect=false;
+			$_SESSION['e_date']="Wpisz poprawny format daty!";
+		}
+
+		//walidacja sposobu płatności
+		
+		if(isset($_POST['methodPayment']))
+		{
+			$methodPayment = $_POST['methodPayment'];
+			$checkMethodPayment = '/(*UTF8)^[a-zA-Z0-9ąćęłńóśźżĄĆĘŁŃÓŚŹŻ\040]*$/';
+
+			if(preg_match($checkMethodPayment, $methodPayment)==false)
+			{
+				$validationCorrect=false;
+				$_SESSION['e_methodPayment']="Metoda płatności może składać się tylko z liter i cyfr";
+			}
+		}
+		else
+		{
+			$validationCorrect=false;
+			$_SESSION['e_methodPayment']="Wybierz metodę płatności!";
+		}
+
+		//walidacja kategorii
+		
+		if(isset($_POST['category']))
+		{
+			$category = $_POST['category'];
+			$checkCategory = '/(*UTF8)^[a-zA-Z0-9ąćęłńóśźżĄĆĘŁŃÓŚŹŻ\040]*$/';
+
+			if(preg_match($checkCategory, $category)==false)
+			{
+				$validationCorrect=false;
+				$_SESSION['e_category']="Kategoria może składać się tylko z liter i cyfr";
+			}
+		}
+		else
+		{
+			$validationCorrect=false;
+			$_SESSION['e_category']="Wybierz kategorie!";
+		}
+
+
+		//walidacja komentarza
+		$comment = $_POST['comment'];
+		$checkComment = '/(*UTF8)^[a-zA-Z0-9ąćęłńóśźżĄĆĘŁŃÓŚŹŻ\040]*$/';
+
+		if(preg_match($checkComment, $comment)==false)
+		{
+			$validationCorrect=false;
+			$_SESSION['e_comment']="Komentarz może składać się tylko z liter i cyfr";
+		}
+	
+		$_SESSION['fr_amount'] = $amount;
+		
+		require_once "connect.php";
+		mysqli_report(MYSQLI_REPORT_STRICT);
+		
+		try
+		{
+			$connection = new mysqli($host, $db_user, $db_password, $db_name);
+			if ($connection->connect_errno!=0)
+			{
+				throw new Exception(mysqli_connect_errno());
+			}
+			else
+			{
+	
+				if ($validationCorrect==true)
+				{
+					//Hurra, wszystkie testy zaliczone, dodajemy wydatek do bazy
+					//echo "Udana walidacja"; exit();
+					$user_id = $_SESSION['id'];
+					
+
+					 
+
+					if ($connection->query("INSERT INTO expenses VALUES (NULL, '$user_id', '$category', '$methodPayment', '$amount', '$date', '$comment')"))
+					{
+						$_SESSION['successfulAddExpense']=true;
+
+						header('Location: expenseAdded.php');
+					}
+					else
+					{
+						throw new Exception($connection->error);
+					}
+					
+					
+				}
+				
+				$connection->close();
+			}
+
+
+		}
+		catch(Exception $e)
+		{
+			echo '<span style="color:red;">Błąd serwera! Przepraszamy za niedogodności i prosimy o rejestrację w innym terminie!</span><br />';
+			//echo '<br />Informacja developerska: '.$e;
+		}
+
+	}
+
 ?>
 
 <!DOCTYPE HTML>
@@ -85,18 +216,38 @@
 							Dodaj wydatek
 						</header>
 						
-						<form>
+						<form method="post">
 						
 							<div class="row m-0 m-lg-3">
 								<div class="col-12 col-lg-6">
 									<div class="input-group mb-3">
+										<?php
+											if (isset($_SESSION['e_amount']))
+											{
+												echo '<div class="text-danger w-100 ms-2 fs-6 position-absolute start-50 translate-middle-x"><br /><br />'.$_SESSION['e_amount'].'</div>';
+												unset($_SESSION['e_amount']);
+											}
+										?>
 										<span class="input-group-text w-50">Kwota</span>
-										<input type="number" class="form-control" placeholder="Podaj kwotę w zł" aria-label="Amount" required>
+										<input type="number" value="<?php
+											if (isset($_SESSION['fr_amount']))
+											{
+												echo $_SESSION['fr_amount'];
+												unset($_SESSION['fr_amount']);
+											}
+										?> step="0.01" class="form-control" placeholder="Podaj kwotę w zł" aria-label="Amount" name="amount" required>
 									</div>
 								</div>
 								
 								<div class="col-12 col-lg-6">
 									<div class="input-group mb-3">
+										<?php
+											if (isset($_SESSION['e_date']))
+											{
+												echo '<div class="text-danger w-100 ms-2 fs-6 position-absolute start-50 translate-middle-x"><br /><br />'.$_SESSION['e_date'].'</div>';
+												unset($_SESSION['e_date']);
+											}
+										?>
 										<span class="input-group-text w-50">Data</span>
 										<input type="date" class="form-control" aria-label="Date" name="date" min="1900-01-01" value="" max="2030-12-31" required>
 									</div>
@@ -106,9 +257,16 @@
 								
 							<div class="row m-0 m-lg-3">
 								<div class="col-12 col-lg-6">
+									<?php
+											if (isset($_SESSION['e_methodPayment']))
+											{
+												echo '<div class="text-danger w-160 fs-6 position-absolute start-25"><br /><br />'.$_SESSION['e_methodPayment'].'</div>';
+												unset($_SESSION['e_methodPayment']);
+											}
+										?>
 									<div class="input-group mb-3">
 										<span class="input-group-text w-50">Sposób płatności </span>
-										<select class="form-select" aria-label="payment">
+										<select class="form-select" name="methodPayment" aria-label="payment">
 
 											<option value="none" selected disabled> </option>
 											<?php
@@ -124,9 +282,16 @@
 								</div>
 								
 								<div class="col-12 col-lg-6">
+									<?php
+											if (isset($_SESSION['e_category']))
+											{
+												echo '<div class="text-danger w-160 fs-6 position-absolute start-25"><br /><br />'.$_SESSION['e_category'].'</div>';
+												unset($_SESSION['e_category']);
+											}
+										?>
 									<div class="input-group mb-3">
 										<span class="input-group-text w-50">Kategoria</span>
-										<select class="form-select" aria-label="category">
+										<select class="form-select" name="category" aria-label="category">
 											<option value="cat0" selected disabled>	</option>
 											<?php
 												for ($i=1; $i<=$_SESSION['iteratorExpenses'];$i++)
@@ -144,16 +309,23 @@
 
 							<div class="row m-0 m-lg-3">
 								<div class="col-12">
+									<?php
+											if (isset($_SESSION['e_comment']))
+											{
+												echo '<div class="text-danger w-200 ms-2 fs-6 position-absolute start-50 translate-middle-x"><br /><br />'.$_SESSION['e_comment'].'</div>';
+												unset($_SESSION['e_comment']);
+											}
+										?>
 									<div class="input-group mb-3">
 										<span class="input-group-text">Komentarz</span>
-										<input type="text" class="form-control" placeholder="Dodaj komentarz" aria-label="Comment">
+										<input type="text" name="comment" class="form-control" placeholder="Dodaj komentarz" aria-label="Comment">
 									</div>
 								</div>
 							</div>
 							
-							<div class="btn-group btn-group-lg start-50 translate-middle mt-4" role="group">
-								<button type="button" class="btn btn-outline-success me-2">Anuluj</button>
-								<button type="button" class="btn btn-success ms-2">Dodaj</button>
+							<div class="btn-group btn-group-lg start-50 translate-middle mt-5" role="group">
+								<button type="button" class="btn btn-outline-success me-2" onclick="location.href='mainmenu.php';">Anuluj</button>
+								<button type="submit" class="btn btn-success ms-2">Dodaj</button>
 							</div>
 
 						</form>
