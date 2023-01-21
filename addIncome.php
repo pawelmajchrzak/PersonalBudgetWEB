@@ -88,11 +88,18 @@ if (isset($_POST['amount']))
 				{
 					//Hurra, wszystkie testy zaliczone, dodajemy przychód do bazy
 					//echo "Udana walidacja"; exit();
+					$user_id = $_SESSION['id'];
 					
-					if ($connection->query("INSERT INTO users VALUES (NULL, '$username', '$password_hash', '$email')"))
+
+					 
+
+					if ($connection->query("INSERT INTO incomes VALUES (NULL, '$user_id', '$category', '$amount', '$date', '$comment')"))
 					{
-						$_SESSION['successfulRegistration']=true;
-						header('Location: welcome.php');
+						$_SESSION['successfulAddIncome']=true;
+
+						//echo mysqli_insert_id($connection); wczytuje ostatnio dodany autoincrement klucza podstawowego
+
+						header('Location: incomeAdded.php');
 					}
 					else
 					{
@@ -249,17 +256,11 @@ if (isset($_POST['amount']))
 
 											<option value="cat0" selected disabled>	</option>
 											<?php
-											for ($i=1; $i<$_SESSION['iteratorIncomes'];$i++)
+											for ($i=1; $i<=$_SESSION['iteratorIncomes'];$i++)
 											{
-												echo '<option value="cat'.$i.'">'.$_SESSION['categoryIncome_name'][$i-1].'</option>';
+												echo '<option value="'.$_SESSION['categoryIncome_id'][$i-1].'">'.$_SESSION['categoryIncome_name'][$i-1].'</option>';
 											}
-
-
-
 											?>
-
-
-
 
 										</select>								
 									</div>
