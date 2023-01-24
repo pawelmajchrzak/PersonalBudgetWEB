@@ -8,6 +8,70 @@ if (!isset($_SESSION['logged']))
 	exit();
 }
 
+
+
+
+
+if (isset($_POST['timePeriod'])||isset($_POST['startPeriod']))
+{
+	//echo $_POST['timePeriod'];
+	//exit();
+	if (!isset($_POST['timePeriod']))
+	{
+		$_POST['timePeriod']=5;
+	}
+
+	if($_POST['timePeriod']==1)
+	{
+		$startOfPeriodTime = date('Y-m-01');
+		$endOfPeriodTime = date('Y-m-01',strtotime('+1 month',time()));
+	}
+	elseif ($_POST['timePeriod']==2)
+	{
+		$startOfPeriodTime = date('Y-m-01',strtotime('-1 month',time()));
+		$endOfPeriodTime = date('Y-m-01');
+	}
+	elseif ($_POST['timePeriod']==3)
+	{
+		$startOfPeriodTime = date('Y-01-01');
+		$endOfPeriodTime = date('Y-01-01',strtotime('+1 Year',time()));
+	}
+	elseif ($_POST['timePeriod']==4)
+	{
+		$startOfPeriodTime = date('Y-01-01',strtotime('-1 month',time()));
+		$endOfPeriodTime = date('Y-01-01');
+	}
+	elseif ($_POST['timePeriod']==5)
+	{
+		$startOfPeriodTime=$_POST['startPeriod'];
+		$endOfPeriodTime=$_POST['endPeriod'];
+		$dateObject= new DateTime($endOfPeriodTime);
+		$dateObject->modify( '+1 day' );
+		$endOfPeriodTime = $dateObject->format('Y-m-d');
+	}
+
+
+
+	echo $startOfPeriodTime;
+	echo '<br>';
+	echo $endOfPeriodTime;
+	exit();
+
+
+
+
+
+
+}
+
+
+
+
+
+
+
+
+
 ?>
 
 <!DOCTYPE HTML>
@@ -89,21 +153,27 @@ if (!isset($_SESSION['logged']))
 					<div class="col-12 col-lg-6 p-2">
 						<div class="border border-success bg-light rounded p-4">
 							<section>
-								<div class="row my-3">					
-									<div class="col-6 text-center">
-										Przedział czasowy
+								<form method="post">
+									<div class="row my-3">					
+										<div class="col-6 text-center">
+											Przedział czasowy
+										</div>
+										<div class="col-6 pb-1">
+											
+											<select class="form-select border border-success col-6" name="timePeriod" onchange="this.form.submit()">
+												
+												<option value="0" selected disabled>	Wybierz zakres	</option>
+												<option value="1">	Ten miesiąc		</option>
+												<option value="2">				Ubiegły miesiąc	</option>
+												<option value="3" >				Ten rok			</option>
+												<option value="4">				Ubiegły rok		</option>
+												
+											</select>
+										
+										</div>
+										
 									</div>
-									<div class="col-6 pb-1">
-										<select class="form-select border border-success col-6">
-											<option value="1" selected >	Ten miesiąc		</option>
-											<option value="2">				Ubiegły miesiąc	</option>
-											<option value="3" >				Ten rok			</option>
-											<option value="4">				Ubiegły rok		</option>
-											<option value="5" >            	Własny zakres...</option>
-										</select>
-									</div>
-									
-								</div>
+								</form>
 								
 								<div class="d-grid gap-2 col-6 mx-auto">
 									<button
@@ -111,7 +181,7 @@ if (!isset($_SESSION['logged']))
 									  data-bs-toggle="modal"
 									  data-bs-target="#timeRange"
 									>
-									  Wybierz zakres
+									  Wybierz własny zakres...
 									</button>
 								</div>
 								
@@ -246,48 +316,48 @@ if (!isset($_SESSION['logged']))
       aria-labelledby="timeRangeLabel"
       aria-hidden="true"
     >
-      <div class="modal-dialog modal-lg">
+    <div class="modal-dialog modal-lg">
         <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title" id="enrollLabel">Wybierz zakres</h5>
-            <button
-              type="button"
-              class="btn-close"
-              data-bs-dismiss="modal"
-              aria-label="Close"
-            ></button>
-          </div>
-          <div class="modal-body">
-            <form>
-				<div class="row m-0 m-lg-3">
-					<div class="col-12 col-lg-6">
-						<div class="input-group mb-3">
-							<span class="input-group-text w-25">Od</span>
-							<input type="date" class="form-control" aria-label="Date" aria-describedby="date" name="date" min="1900-01-01" value="" max="2030-12-31" required>
+			<div class="modal-header">
+				<h5 class="modal-title" id="enrollLabel">Wybierz zakres</h5>
+				<button
+				type="button"
+				class="btn-close"
+				data-bs-dismiss="modal"
+				aria-label="Close"
+				></button>
+			</div>
+				<form method="post">
+					<div class="modal-body">
+						<div class="row m-0 m-lg-3">
+							<div class="col-12 col-lg-6">
+								<div class="input-group mb-3">
+									<span class="input-group-text w-25">Od</span>
+									<input type="date" class="form-control" aria-label="Date" aria-describedby="date" name="startPeriod" min="1900-01-01" value="" max="2030-12-31" required>
+								</div>
+							</div>
+							
+							<div class="col-12 col-lg-6">
+								<div class="input-group mb-3">
+									<span class="input-group-text w-25">Do</span>
+									<input type="date" class="form-control" aria-label="Date" aria-describedby="date" name="endPeriod" min="1900-01-01" value="" max="2030-12-31" required>
+								</div>
+							</div>
 						</div>
 					</div>
-					
-					<div class="col-12 col-lg-6">
-						<div class="input-group mb-3">
-							<span class="input-group-text w-25">Do</span>
-							<input type="date" class="form-control" aria-label="Date" aria-describedby="date" name="date" min="1900-01-01" value="" max="2030-12-31" required>
-						</div>
+					<div class="modal-footer">
+						<button
+						type="button"
+						class="btn btn-secondary"
+						data-bs-dismiss="modal"
+						>
+						Zamknij
+						</button>
+						<button type="submit" class="btn btn-success">Wybierz</button>
 					</div>
-				</div>
-            </form>
-          </div>
-          <div class="modal-footer">
-            <button
-              type="button"
-              class="btn btn-secondary"
-              data-bs-dismiss="modal"
-            >
-              Zamknij
-            </button>
-            <button type="button" class="btn btn-success">Wybierz</button>
-          </div>
-        </div>
-      </div>
+				</form>
+			</div>
+      	</div>
     </div>
 	
 	
@@ -295,6 +365,7 @@ if (!isset($_SESSION['logged']))
 	
 	<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
 	<script src="js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="javaScript.js"></script>
 	
 	
 
