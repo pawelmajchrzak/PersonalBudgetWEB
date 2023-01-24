@@ -1,3 +1,15 @@
+<?php
+
+	session_start();
+	
+	if ((isset($_SESSION['logged'])) && ($_SESSION['logged']==true))
+	{
+		header('Location: mainmenu.php');
+		exit();
+	}
+
+?>
+
 <!DOCTYPE HTML>
 <html lang="pl">
 <head>
@@ -10,7 +22,7 @@
 	<meta name="keywords" content="budżet, osobisty, personal, budget, przychody, wydatki, bilans, finanse, rodzinny, aplikacja, internetowa, oszczędności, portfel" />
 	
 	
-	<link rel="stylesheet" href="css/bootstrap.min.css">	
+	<link rel="stylesheet" href="css/bootstrap.min.css">
 	<link rel="stylesheet" href="style.css" type="text/css" />
 	<link rel="preconnect" href="https://fonts.gstatic.com">
 	<link href="https://fonts.googleapis.com/css2?family=Caveat&family=Lato:wght@300;400;700&family=Poppins:wght@200;400&display=swap" rel="stylesheet">
@@ -20,7 +32,7 @@
 
 <body>
 
-	<a href="login.html" class="btn btn-lg btn-outline-secondary position-absolute end-0 me-3">Logowanie</a>
+	<a href="registration.php" class="btn btn-lg btn-outline-secondary position-absolute end-0 me-3">Rejestracja</a>
 	
 	<header class="col-12 col-md-8 col-lg-7 col-xl-6 col-xxl-5 px-3 m-auto mt-3 pt-4">
 		<h1 class="logo"><i class="icon-money"></i>  Budżet osobisty</h1>
@@ -31,46 +43,57 @@
 		<div class="col-md-8 col-lg-7 col-xl-6 col-xxl-5 bg-white m-2 m-md-auto border border-light rounded p-2 shadow-lg">
 		
 			<header class="h3 text-start m-3" style="letter-spacing: 2px;">
-				Rejestracja
+				Logowanie
 			</header>
 			
-			<form>
-
-				<div class="input-group p-3 m-auto">
-					<span class="input-group-text w-25">Imię</span>
-					<input type="text" class="form-control" placeholder="Podaj imię" aria-label="Name" required>
-				</div>
+			<form action="loginNow.php" method="post">
 
 				<div class="input-group p-3 m-auto">
 					<span class="input-group-text w-25">E-mail</span>
-					<input type="email" class="form-control" placeholder="Podaj adres Email" aria-label="Email" required>
+					<input type="email" value="<?php
+						if (isset($_SESSION['fr_email']))
+						{
+							echo $_SESSION['fr_email'];
+							unset($_SESSION['fr_email']);
+						}
+					?>" class="form-control" placeholder="Podaj adres E-mail" aria-label="Email" name="email" required>
 				</div>
 
 				<div class="input-group p-3 m-auto">
 					<span class="input-group-text w-25">Hasło</span>
-					<input type="password" class="form-control" placeholder="Podaj hasło" aria-label="Password" required>
+					<input type="password" class="form-control" placeholder="Podaj hasło" aria-label="Password" name="password" required>
 				</div>
+				<span class="fs-6 ms-4 text-danger">
+				<?php
+					if(isset($_SESSION['error']))
+					{
+						echo $_SESSION['error'];
+						unset($_SESSION['error']);
+					}
+				?>
+				</span>
 				
-				<div class="col-12 col-md-11 col-lg-9 m-auto">
-					<div class="ms-3 p-3 fs-6">
-						<input type="checkbox" class="form-check-input" value="a" name="wyp[]" required> Akceptuję <a href="" target="_blank" class="link">Regulamin</a> i <a href="" target="_blank" class="link">Politykę prywatności</a>
+				<div class="col-8 m-auto">
+					<div class="ms-3 p-2 fs-6">
+						<a href="" class="link"> Przypomnienie hasła </a>
 						<br />
-						Masz już konto? <a href="login.html" class="link">Zaloguj się</a>
+						Nie masz konta? <a href="registration.php" class="link">Zarejestruj się</a>
 					</div>
 				</div>
 				
 				<div class="btn-group btn-group-lg mt-5 start-50 translate-middle">
-					<button type="submit" class="btn btn-success">Zarejestruj się</button>
+					<button type="submit" class="btn btn-success">Zaloguj się</button>
 				</div>
 				
+
 			</form>	
 		
 		</div>
-
+	
 	</article>
 	
 	<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
-	<script src="js/bootstrap.min.js"></script>	
-
+	<script src="js/bootstrap.min.js"></script>
+	
 </body>
 </html>

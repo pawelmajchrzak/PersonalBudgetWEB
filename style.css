@@ -133,3 +133,8 @@ circle {
 {
 	min-height: 57px;
 }
+
+.welcomeConteiner
+{
+	min-height: 600px;
+}

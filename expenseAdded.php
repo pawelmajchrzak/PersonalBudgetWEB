@@ -1,3 +1,28 @@
+<?php
+
+	session_start();
+	
+	if (!isset($_SESSION['successfulAddExpense']))
+	{
+		header('Location: login.php');
+		exit();
+	}
+	else
+	{
+		unset($_SESSION['successfulAddExpense']);
+	}
+	
+	//Usuwanie zmiennych pamiętających wartości wpisane do formularza
+	if (isset($_SESSION['fr_amount'])) unset($_SESSION['fr_amount']);
+	
+	//Usuwanie błędów rejestracji
+	if (isset($_SESSION['e_amount'])) unset($_SESSION['e_amount']);
+	if (isset($_SESSION['e_date'])) unset($_SESSION['e_date']);
+	if (isset($_SESSION['e_category'])) unset($_SESSION['e_category']);
+	if (isset($_SESSION['e_comment'])) unset($_SESSION['e_comment']);
+	if (isset($_SESSION['e_methodPayment'])) unset($_SESSION['e_methodPayment']);
+	
+?>
 <!DOCTYPE HTML>
 <html lang="pl">
 <head>
@@ -20,8 +45,8 @@
 
 <body>
 
-	<a href="registration.html" class="btn btn-lg btn-outline-secondary position-absolute end-0 me-3">Rejestracja</a>
-	
+	<a href="login.php" class="btn btn-lg btn-outline-secondary position-absolute end-0 me-3">Logowanie</a>
+
 	<header class="col-12 col-md-8 col-lg-7 col-xl-6 col-xxl-5 px-3 m-auto mt-3 pt-4">
 		<h1 class="logo"><i class="icon-money"></i>  Budżet osobisty</h1>
 	</header>
@@ -31,36 +56,19 @@
 		<div class="col-md-8 col-lg-7 col-xl-6 col-xxl-5 bg-white m-2 m-md-auto border border-light rounded p-2 shadow-lg">
 		
 			<header class="h3 text-start m-3" style="letter-spacing: 2px;">
-				Logowanie
+				Wydatek został dodany do bazy danych!
 			</header>
 			
-			<form>
-
-				<div class="input-group p-3 m-auto">
-					<span class="input-group-text w-25">E-mail</span>
-					<input type="email" class="form-control" placeholder="Podaj adres E-mail" aria-label="Email" required>
-				</div>
-
-				<div class="input-group p-3 m-auto">
-					<span class="input-group-text w-25">Hasło</span>
-					<input type="password" class="form-control" placeholder="Podaj hasło" aria-label="Password" required>
-				</div>
+				<div class="mx-auto" style="width: 300px;">Powrót do menu głównego: </div>
 				
-				<div class="col-8 m-auto">
-					<div class="ms-3 p-2 fs-6">
-						<a href="" class="link"> Przypomnienie hasła </a>
-						<br />
-						Nie masz konta? <a href="registration.html" class="link">Zarejestruj się</a>
-					</div>
+			
+				<br />
+				<div class="mx-auto" style="width: 150px;">
+					<a href="mainmenu.php" class="btn btn-lg btn-success m-auto">Menu główne</a>
+					
 				</div>
-				
-				<div class="btn-group btn-group-lg mt-5 start-50 translate-middle">
-					<button type="submit" class="btn btn-success">Zaloguj się</button>
-				</div>
-				
-
-			</form>	
-		
+			
+					
 		</div>
 	
 	</article>
@@ -70,3 +78,4 @@
 	
 </body>
 </html>
+
