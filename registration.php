@@ -137,20 +137,6 @@
 							$singleTypeOfMethodPayment = $defaultMethodPayment['name'];
 							$connection->query("INSERT INTO payment_methods_assigned_to_users VALUES (NULL, '$userId', '$singleTypeOfMethodPayment')");
 						}
-						
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 						$_SESSION['successfulRegistration']=true;
 						header('Location: welcome.php');
@@ -158,14 +144,11 @@
 					else
 					{
 						throw new Exception($connection->error);
-					}
-					
-					
+					}			
 				}
 				
 				$connection->close();
 			}
-
 
 		}
 		catch(Exception $e)
@@ -174,9 +157,7 @@
 			//echo '<br />Informacja developerska: '.$e;
 		}
 
-
 	}
-
 ?>
 
 <!DOCTYPE HTML>
@@ -312,10 +293,7 @@
 					<br /><br /><br />
 				</div>
 
-				
 
-				
-				
 				<div class="btn-group btn-group-lg mt-5 start-50 translate-middle">
 					<button type="submit" class="btn btn-success">Zarejestruj się</button>
 				</div>

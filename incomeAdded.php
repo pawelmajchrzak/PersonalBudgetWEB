@@ -64,10 +64,8 @@
 				<br />
 				<div class="mx-auto" style="width: 150px;">
 					<a href="mainmenu.php" class="btn btn-lg btn-success m-auto">Menu główne</a>
-					
 				</div>
-			
-					
+				
 		</div>
 	
 	</article>

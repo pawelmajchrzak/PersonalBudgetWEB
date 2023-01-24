@@ -40,7 +40,6 @@
 		}
 
 		//walidacja sposobu płatności
-		
 		if(isset($_POST['methodPayment']))
 		{
 			$methodPayment = $_POST['methodPayment'];
@@ -109,20 +108,15 @@
 					//echo "Udana walidacja"; exit();
 					$user_id = $_SESSION['id'];
 					
-
-					 
-
 					if ($connection->query("INSERT INTO expenses VALUES (NULL, '$user_id', '$category', '$methodPayment', '$amount', '$date', '$comment')"))
 					{
 						$_SESSION['successfulAddExpense']=true;
-
 						header('Location: expenseAdded.php');
 					}
 					else
 					{
 						throw new Exception($connection->error);
 					}
-					
 					
 				}
 				
@@ -275,7 +269,6 @@
 													echo '<option value="'.$_SESSION['methodPayment_id'][$i-1].'">'.$_SESSION['methodPayment_name'][$i-1].'</option>';
 												}
 											?>
-
 
 										</select>		
 									</div>

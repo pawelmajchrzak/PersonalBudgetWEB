@@ -20,15 +20,6 @@
     {
 		$startOfCurrentMonth = date('Y-m-01');
 		$startOfNextMonth = date('Y-m-01',strtotime('+1 month',time()));
-		//$currentDate += 86400;
-		//$currentDate = curdate();
-		//echo $startOfCurrentMonth;
-		//echo '<br>';
-		//echo $startOfNextMonth;
-		//exit();
-
-
-
 
 		if ($resultIncomes = @$connection->query(
 			sprintf("SELECT * FROM incomes WHERE user_id='%s' AND date_of_income>='%s' AND date_of_income<'%s'",
@@ -60,24 +51,8 @@
 
 			$balance = $sumOfIncomes-$sumOfExpenses;
 
-
-
-
-
-
-
 		$connection->close();
 	}
-
-
-
-
-	
-
-
-
-
-	
 ?>
 
 <!DOCTYPE HTML>

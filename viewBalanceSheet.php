@@ -8,14 +8,9 @@ if (!isset($_SESSION['logged']))
 	exit();
 }
 
-
-
-
-
 if (isset($_POST['timePeriod'])||isset($_POST['startPeriod']))
 {
-	//echo $_POST['timePeriod'];
-	//exit();
+
 	if (!isset($_POST['timePeriod']))
 	{
 		$_POST['timePeriod']=5;
@@ -57,11 +52,6 @@ if (isset($_POST['timePeriod'])||isset($_POST['startPeriod']))
 	$_SESSION['periodTime'] = $startOfPeriodTime.' -zakres czasu- '.$workingDate;
 
 
-	//echo $_SESSION['periodTime'];
-	//echo '<br>';
-	//echo $endOfPeriodTime;
-	//exit();
-
 	require_once "connect.php";
     $connection = @new mysqli($host, $db_user, $db_password, $db_name);
 
@@ -71,7 +61,6 @@ if (isset($_POST['timePeriod'])||isset($_POST['startPeriod']))
 	}
 	else
     {
-		
 		if ($resultCategoryIncomes = @$connection->query(
 		sprintf("SELECT * FROM incomes_category_assigned_to_users WHERE user_id='%s'",
 		mysqli_real_escape_string($connection,$_SESSION['id']))))
@@ -90,8 +79,7 @@ if (isset($_POST['timePeriod'])||isset($_POST['startPeriod']))
 					mysqli_real_escape_string($connection,$categoryIncome_id[$i]),
 					mysqli_real_escape_string($connection,$startOfPeriodTime),
 					mysqli_real_escape_string($connection,$endOfPeriodTime)));
-
-					
+	
 					$sumOfIncomes[$i]=0;
 					while ($recordIncomes = $resultIncomes->fetch_assoc())
 					{
@@ -123,7 +111,6 @@ if (isset($_POST['timePeriod'])||isset($_POST['startPeriod']))
 					mysqli_real_escape_string($connection,$startOfPeriodTime),
 					mysqli_real_escape_string($connection,$endOfPeriodTime)));
 
-					
 					$sumOfExpenses[$i]=0;
 					while ($recordExpenses = $resultExpenses->fetch_assoc())
 					{
@@ -136,42 +123,27 @@ if (isset($_POST['timePeriod'])||isset($_POST['startPeriod']))
 			$iteratorExpenses = $i;
 		}
 
-				$balance = $generalSumOfIncomes-$generalSumOfExpenses;
+		$balance = $generalSumOfIncomes-$generalSumOfExpenses;
 
-				if($balance >= 200)
-				{
-					$commentToBalance= 'Gratulacje! Dobrze gospodarujesz swoimi pieniędzmi!';
-					$colorText='success';
-				}
-				elseif ($balance >= -200)
-				{
-					$commentToBalance= 'Uważaj! Jesteś na granicy płynności!';
-					$colorText='warning';
-				}
-				else
-				{
-					$commentToBalance= 'Źle gospodarujesz swoimi pieniędzmi! Czas na zmiany...';
-					$colorText='danger';
-				}
-
-
-
-
-
+		if($balance >= 200)
+		{
+			$commentToBalance= 'Gratulacje! Dobrze gospodarujesz swoimi pieniędzmi!';
+			$colorText='success';
+		}
+		elseif ($balance >= -200)
+		{
+			$commentToBalance= 'Uważaj! Jesteś na granicy płynności!';
+			$colorText='warning';
+		}
+		else
+		{
+			$commentToBalance= 'Źle gospodarujesz swoimi pieniędzmi! Czas na zmiany...';
+			$colorText='danger';
+		}
 
 	}
 
-
-
-
 }
-
-
-
-
-
-
-
 
 
 ?>
@@ -241,8 +213,6 @@ if (isset($_POST['timePeriod'])||isset($_POST['startPeriod']))
 		<main>
 		
 
-		
-		
 			<div class="container">
 				
 				<div class="row px-2">
@@ -385,8 +355,7 @@ if (isset($_POST['timePeriod'])||isset($_POST['startPeriod']))
 	</div>
 	
 	
-	
-	
+
 	
 	<div
       class="modal fade"
@@ -440,12 +409,8 @@ if (isset($_POST['timePeriod'])||isset($_POST['startPeriod']))
     </div>
 	
 	
-	
-	
 	<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
 	<script src="js/bootstrap.min.js"></script>
-	<script type="text/javascript" src="javaScript.js"></script>
-	
 	
 
 </body>

@@ -87,7 +87,6 @@ if (isset($_POST['amount']))
 				if ($validationCorrect==true)
 				{
 					//Hurra, wszystkie testy zaliczone, dodajemy przychód do bazy
-					//echo "Udana walidacja"; exit();
 					$user_id = $_SESSION['id'];
 					
 
@@ -96,9 +95,7 @@ if (isset($_POST['amount']))
 					if ($connection->query("INSERT INTO incomes VALUES (NULL, '$user_id', '$category', '$amount', '$date', '$comment')"))
 					{
 						$_SESSION['successfulAddIncome']=true;
-
 						//echo mysqli_insert_id($connection); wczytuje ostatnio dodany autoincrement klucza podstawowego
-
 						header('Location: incomeAdded.php');
 					}
 					else

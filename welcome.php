@@ -67,7 +67,6 @@
 					<a href="login.php" class="btn btn-lg btn-success m-auto">Logowanie</a>
 					
 				</div>
-			
 					
 		</div>
 	
