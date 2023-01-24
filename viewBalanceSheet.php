@@ -49,15 +49,117 @@ if (isset($_POST['timePeriod'])||isset($_POST['startPeriod']))
 		$dateObject->modify( '+1 day' );
 		$endOfPeriodTime = $dateObject->format('Y-m-d');
 	}
+	
+	$dateObject= new DateTime($endOfPeriodTime);
+	$dateObject->modify( '-1 day' );
+	$workingDate = $dateObject->format('Y-m-d');
+
+	$_SESSION['periodTime'] = $startOfPeriodTime.' -zakres czasu- '.$workingDate;
+
+
+	//echo $_SESSION['periodTime'];
+	//echo '<br>';
+	//echo $endOfPeriodTime;
+	//exit();
+
+	require_once "connect.php";
+    $connection = @new mysqli($host, $db_user, $db_password, $db_name);
+
+	if ($connection->connect_errno!=0)
+	{
+		echo "Error: ".$connection->connect_errno;
+	}
+	else
+    {
+		
+		if ($resultCategoryIncomes = @$connection->query(
+		sprintf("SELECT * FROM incomes_category_assigned_to_users WHERE user_id='%s'",
+		mysqli_real_escape_string($connection,$_SESSION['id']))))
+		{
+			$i=0;
+			$generalSumOfIncomes = 0;
+			while ($recordCategoryIncomes = $resultCategoryIncomes->fetch_assoc())
+			{
+				
+				$categoryIncome_id[$i] = $recordCategoryIncomes['id'];
+				$categoryIncome_name[$i] = $recordCategoryIncomes['name'];
+
+				$resultIncomes = @$connection->query(
+					sprintf("SELECT * FROM incomes WHERE user_id='%s' AND income_category_assigned_to_user_id='%s' AND date_of_income>='%s' AND date_of_income<'%s' ",
+					mysqli_real_escape_string($connection,$_SESSION['id']),
+					mysqli_real_escape_string($connection,$categoryIncome_id[$i]),
+					mysqli_real_escape_string($connection,$startOfPeriodTime),
+					mysqli_real_escape_string($connection,$endOfPeriodTime)));
+
+					
+					$sumOfIncomes[$i]=0;
+					while ($recordIncomes = $resultIncomes->fetch_assoc())
+					{
+						$sumOfIncomes[$i]+=$recordIncomes['amount'];
+					}
+				
+				$generalSumOfIncomes += $sumOfIncomes[$i];
+				$i++;
+			}
+			$iteratorIncomes = $i;
+		}
+
+		if ($resultCategoryExpenses = @$connection->query(
+		sprintf("SELECT * FROM expenses_category_assigned_to_users WHERE user_id='%s'",
+		mysqli_real_escape_string($connection,$_SESSION['id']))))
+		{
+			$i=0;
+			$generalSumOfExpenses = 0;
+			while ($recordCategoryExpenses = $resultCategoryExpenses->fetch_assoc())
+			{
+				
+				$categoryExpense_id[$i] = $recordCategoryExpenses['id'];
+				$categoryExpense_name[$i] = $recordCategoryExpenses['name'];
+
+				$resultExpenses = @$connection->query(
+					sprintf("SELECT * FROM expenses WHERE user_id='%s' AND expense_category_assigned_to_user_id='%s' AND date_of_expense>='%s' AND date_of_expense<'%s' ",
+					mysqli_real_escape_string($connection,$_SESSION['id']),
+					mysqli_real_escape_string($connection,$categoryExpense_id[$i]),
+					mysqli_real_escape_string($connection,$startOfPeriodTime),
+					mysqli_real_escape_string($connection,$endOfPeriodTime)));
+
+					
+					$sumOfExpenses[$i]=0;
+					while ($recordExpenses = $resultExpenses->fetch_assoc())
+					{
+						$sumOfExpenses[$i]+=$recordExpenses['amount'];
+					}
+				
+				$generalSumOfExpenses += $sumOfExpenses[$i];
+				$i++;
+			}
+			$iteratorExpenses = $i;
+		}
+
+				$balance = $generalSumOfIncomes-$generalSumOfExpenses;
+
+				if($balance >= 200)
+				{
+					$commentToBalance= 'Gratulacje! Dobrze gospodarujesz swoimi pieniędzmi!';
+					$colorText='success';
+				}
+				elseif ($balance >= -200)
+				{
+					$commentToBalance= 'Uważaj! Jesteś na granicy płynności!';
+					$colorText='warning';
+				}
+				else
+				{
+					$commentToBalance= 'Źle gospodarujesz swoimi pieniędzmi! Czas na zmiany...';
+					$colorText='danger';
+				}
 
 
 
-	echo $startOfPeriodTime;
-	echo '<br>';
-	echo $endOfPeriodTime;
-	exit();
 
 
+
+	}
 
 
 
@@ -193,12 +295,21 @@ if (isset($_POST['timePeriod'])||isset($_POST['startPeriod']))
 							<section>
 								<div class="row my-3 px-4">
 									<div class="col-6 h4 text-center fw-bold">Bilans:</div>
-									<div class="col-5 h4  text-center fw-bold"><span class="text-success">+ </span>1300 zł</div>
+									<div class="col-5 h4  text-center fw-bold"><span class="text-success"><?php if(isset($balance)) if($balance>=0) echo '+' ?> </span><?php if(isset($balance)) echo $balance; else echo '0'; ?> zł</div>
 								</div>
-								<div class="fs-6 text-success text-center">Gratulacje! Dobrze gospodarujesz swoimi pieniędzmi!</div>
-								
+
+								<div class="fs-6 text-center <?php echo 'text-'.$colorText.'">'.$commentToBalance ?></div>
+								<?php
+									if (isset($_SESSION['periodTime']))
+									{
+										echo '<div class="text-success fs-6 text-center "><br>'.$_SESSION['periodTime'].'</div>';
+										unset($_SESSION['periodTime']);
+									}
+								?>
 							</section>
+
 						</div>
+
 					</div>
 				</div>
 				
@@ -211,22 +322,24 @@ if (isset($_POST['timePeriod'])||isset($_POST['startPeriod']))
 										Przychody
 								</header>					
 								
-								<div class="col-7 text-start d-inline-block ms-2 my-2">Wynagrodzenie:</div>
-								<div class="col-4 text-end d-inline-block me-2 my-2"><span class="text-success pe-1">+</span>4500 zł</div>
-								
-								<div class="col-7 text-start d-inline-block ms-2 my-2">Odsetki bankowe:</div>
-								<div class="col-4 text-end d-inline-block me-2 my-2"><span class="text-success pe-1">+</span>125 zł</div>
-								
-								<div class="col-7 text-start d-inline-block ms-2 my-2">Sprzedaż online:</div>
-								<div class="col-4 text-end d-inline-block me-2 my-2"><span class="text-success pe-1">+</span>350 zł</div>
-								
-								<div class="col-7 text-start d-inline-block ms-2 my-2">Inne:</div>
-								<div class="col-4 text-end d-inline-block me-2 my-2"><span class="text-success pe-1">+</span>0 zł</div>
-								
+								<?php
+									if(isset($balance))
+									{
+										for ($i=0; $i<$iteratorIncomes;$i++)
+										{	
+											if($sumOfIncomes[$i]>0)
+											{
+											echo '<div class="col-7 text-start d-inline-block ms-2 my-2">'.$categoryIncome_name[$i].': </div>';
+											echo '<div class="col-4 text-end d-inline-block me-2 my-2"><span class="text-success pe-1">+</span>'.$sumOfIncomes[$i].' zł</div>';
+											}
+										}
+									}
+								?>
+
 								<div class="border-bottom border-success my-2"></div>
 								
 								<div class="col-7 text-start d-inline-block ms-2 my-2 fw-bold">Suma:</div>
-								<div class="col-4 text-end d-inline-block me-2 my-2 fw-bold"><span class="text-success pe-1">+</span>4975 zł</div>
+								<div class="col-4 text-end d-inline-block me-2 my-2 fw-bold"><span class="text-success pe-1">+</span><?php if(isset($balance)) echo $generalSumOfIncomes; else echo '0'; ?> zł</div>
 								
 							</section>
 						</div>
@@ -236,60 +349,26 @@ if (isset($_POST['timePeriod'])||isset($_POST['startPeriod']))
 							<section>
 								<header class="h4 text-center mb-3">
 									Wydatki
-								</header>		
+								</header>	
+								
+								<?php
+									if(isset($balance))
+									{
+										for ($i=0; $i<$iteratorExpenses;$i++)
+										{
+											if($sumOfExpenses[$i]>0)
+											{
+											echo '<div class="col-7 text-start d-inline-block ms-2 my-2">'.$categoryExpense_name[$i].': </div>';
+											echo '<div class="col-4 text-end d-inline-block me-2 my-2"><span class="text-danger pe-1">-</span>'.$sumOfExpenses[$i].' zł</div>';
+											}
+										}
+									}
+								?>
 
-								<div class="col-7 text-start d-inline-block ms-2 my-2">Jedzenie:</div>
-								<div class="col-4 text-end d-inline-block me-2 my-2"><span class="text-danger pe-1">-</span>3200 zł</div>
-								
-								<div class="col-7 text-start d-inline-block ms-2 my-2">Mieszkanie:</div>
-								<div class="col-4 text-end d-inline-block me-2 my-2"><span class="text-danger pe-1">-</span>125 zł</div>
-								
-								<div class="col-7 text-start d-inline-block ms-2 my-2">Transport:</div>
-								<div class="col-4 text-end d-inline-block me-2 my-2"><span class="text-danger pe-1">-</span>350 zł</div>
-								
-								<div class="col-7 text-start d-inline-block ms-2 my-2">Telekomunikacja:</div>
-								<div class="col-4 text-end d-inline-block me-2 my-2"><span class="text-danger pe-1">-</span>0 zł</div>
-								
-								<div class="col-7 text-start d-inline-block ms-2 my-2">Opieka zdrowotna:</div>
-								<div class="col-4 text-end d-inline-block me-2 my-2"><span class="text-danger pe-1">-</span>0 zł</div>
-								
-								<div class="col-7 text-start d-inline-block ms-2 my-2">Ubranie:</div>
-								<div class="col-4 text-end d-inline-block me-2 my-2"><span class="text-danger pe-1">-</span>0 zł</div>
-								
-								<div class="col-7 text-start d-inline-block ms-2 my-2">Higiena:</div>
-								<div class="col-4 text-end d-inline-block me-2 my-2"><span class="text-danger pe-1">-</span>0 zł</div>
-								
-								<div class="col-7 text-start d-inline-block ms-2 my-2">Dzieci:</div>
-								<div class="col-4 text-end d-inline-block me-2 my-2"><span class="text-danger pe-1">-</span>0 zł</div>
-								
-								<div class="col-7 text-start d-inline-block ms-2 my-2">Rozrywka:</div>
-								<div class="col-4 text-end d-inline-block me-2 my-2"><span class="text-danger pe-1">-</span>0 zł</div>
-								
-								<div class="col-7 text-start d-inline-block ms-2 my-2">Wycieczka:</div>
-								<div class="col-4 text-end d-inline-block me-2 my-2"><span class="text-danger pe-1">-</span>0 zł</div>
-								
-								<div class="col-7 text-start d-inline-block ms-2 my-2">Szkolenia:</div>
-								<div class="col-4 text-end d-inline-block me-2 my-2"><span class="text-danger pe-1">-</span>0 zł</div>
-								
-								<div class="col-7 text-start d-inline-block ms-2 my-2">Książki:</div>
-								<div class="col-4 text-end d-inline-block me-2 my-2"><span class="text-danger pe-1">-</span>0 zł</div>
-								
-								<div class="col-7 text-start d-inline-block ms-2 my-2">Emerytura:</div>
-								<div class="col-4 text-end d-inline-block me-2 my-2"><span class="text-danger pe-1">-</span>0 zł</div>
-								
-								<div class="col-7 text-start d-inline-block ms-2 my-2">Spłata długów:</div>
-								<div class="col-4 text-end d-inline-block me-2 my-2"><span class="text-danger pe-1">-</span>0 zł</div>
-								
-								<div class="col-7 text-start d-inline-block ms-2 my-2">Darowizna:</div>
-								<div class="col-4 text-end d-inline-block me-2 my-2"><span class="text-danger pe-1">-</span>0 zł</div>
-								
-								<div class="col-7 text-start d-inline-block ms-2 my-2">Inne wydatki:</div>
-								<div class="col-4 text-end d-inline-block me-2 my-2"><span class="text-danger pe-1">-</span>0 zł</div>
-								
 								<div class="border-bottom border-success my-2"></div>
 								
 								<div class="col-7 text-start d-inline-block ms-2 my-2 fw-bold">Suma:</div>
-								<div class="col-4 text-end d-inline-block me-2 my-2 fw-bold"><span class="text-danger pe-1">-</span>3675 zł</div>
+								<div class="col-4 text-end d-inline-block me-2 my-2 fw-bold"><span class="text-danger pe-1">-</span><?php if(isset($balance)) echo $generalSumOfExpenses; else echo '0'; ?> zł</div>
 														
 							</section>
 						</div>
