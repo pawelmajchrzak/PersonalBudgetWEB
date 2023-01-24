@@ -7,6 +7,76 @@
 		header('Location: login.php');
 		exit();
 	}
+
+
+	require_once "connect.php";
+    $connection = @new mysqli($host, $db_user, $db_password, $db_name);
+
+	if ($connection->connect_errno!=0)
+	{
+		echo "Error: ".$connection->connect_errno;
+	}
+	else
+    {
+		$startOfCurrentMonth = date('Y-m-01');
+		$startOfNextMonth = date('Y-m-01',strtotime('+1 month',time()));
+		//$currentDate += 86400;
+		//$currentDate = curdate();
+		//echo $startOfCurrentMonth;
+		//echo '<br>';
+		//echo $startOfNextMonth;
+		//exit();
+
+
+
+
+		if ($resultIncomes = @$connection->query(
+			sprintf("SELECT * FROM incomes WHERE user_id='%s' AND date_of_income>='%s' AND date_of_income<'%s'",
+			mysqli_real_escape_string($connection,$_SESSION['id']),
+			mysqli_real_escape_string($connection,$startOfCurrentMonth),
+			mysqli_real_escape_string($connection,$startOfNextMonth))))
+			{
+				$sumOfIncomes=0;
+				while ($recordIncomes = $resultIncomes->fetch_assoc())
+				{
+					$_SESSION['dateOfIncome'] = $recordIncomes['date_of_income'];
+					$sumOfIncomes += $recordIncomes['amount'];
+				}
+			}
+
+		if ($resultExpenses = @$connection->query(
+			sprintf("SELECT * FROM expenses WHERE user_id='%s' AND date_of_expense>='%s' AND date_of_expense<'%s'",
+			mysqli_real_escape_string($connection,$_SESSION['id']),
+			mysqli_real_escape_string($connection,$startOfCurrentMonth),
+			mysqli_real_escape_string($connection,$startOfNextMonth))))
+			{
+				$sumOfExpenses=0;
+				while ($recordExpenses = $resultExpenses->fetch_assoc())
+				{
+					$_SESSION['dateOfExpense'] = $recordExpenses['date_of_expense'];
+					$sumOfExpenses += $recordExpenses['amount'];
+				}
+			}
+
+			$balance = $sumOfIncomes-$sumOfExpenses;
+
+
+
+
+
+
+
+		$connection->close();
+	}
+
+
+
+
+	
+
+
+
+
 	
 ?>
 
@@ -81,23 +151,28 @@
 						<div class="mb-3 border border-success bg-light rounded p-2">
 						
 							<header class="h4 text-center mb-3">
-								<div class="d-inline-block">Ten miesiąc  -</div>
+								<div class="d-inline-block">Ten miesiąc:  </div>
 								
-								<div id="currentMonth" class="d-inline-block"></div>
+								<div class="d-inline-block">
+									<?php
+										echo date('Y-m');
+									?>
+
+								</div>
 							</header>
 							
 							<section>
 							
 								<div class="col-7 text-start d-inline-block ms-2 my-3">Suma przychodów:</div>
-								<div class="col-4 text-end d-inline-block me-2 my-3"><span class="text-success pe-1">+</span>4500 zł</div>
+								<div class="col-4 text-end d-inline-block me-2 my-3"><span class="text-success pe-1">+</span><?php echo $sumOfIncomes;?> zł</div>
 
 								<div class="col-7 text-start d-inline-block ms-2 my-3">Suma wydatków:</div>
-								<div class="col-4 text-end d-inline-block me-2 my-3"><span class="text-danger pe-1">-</span>4500 zł</div>
+								<div class="col-4 text-end d-inline-block me-2 my-3"><span class="text-danger pe-1">-</span><?php echo $sumOfExpenses;?> zł</div>
 
 								<div class="border-bottom border-success my-2"></div>
 
 								<div class="col-7 text-start d-inline-block ms-2 my-3 fw-bold">Bilans:</div>
-								<div class="col-4 text-end d-inline-block me-2 my-3 fw-bold"><span class="text-success pe-1">+</span>4500 zł</div>
+								<div class="col-4 text-end d-inline-block me-2 my-3 fw-bold"> <span class="text-success pe-1"><?php if($balance>=0) echo '+';?></span><?php echo $balance;?> zł</div>
 			
 							</section>
 							
